@@ -1,0 +1,326 @@
+{
+  "landing": {
+    "title": "Module Handbook",
+    "file": "module-handbook.md"
+  },
+  "chapters": [
+    {
+      "title": "Admin Interface",
+      "path": "admin-interface",
+      "pages": [
+        {
+          "title": "Admin Actions",
+          "file": "admin-interface/admin-actions.md"
+        },
+        {
+          "title": "Admin Forms and Smarty Plugins",
+          "file": "admin-interface/admin-forms.md"
+        },
+        {
+          "title": "Admin Tabs and Navigation",
+          "file": "admin-interface/admin-tabs-and-navigation.md"
+        },
+        {
+          "title": "AJAX in the Admin",
+          "file": "admin-interface/ajax.md"
+        }
+      ]
+    },
+    {
+      "title": "Assets and Resources",
+      "path": "assets-and-resources",
+      "pages": [
+        {
+          "title": "Images and Icons",
+          "file": "assets-and-resources/images-and-icons.md"
+        },
+        {
+          "title": "Loading CSS and JavaScript",
+          "file": "assets-and-resources/loading-css-and-javascript.md"
+        }
+      ]
+    },
+    {
+      "title": "Background Jobs (CmsJobManager)",
+      "path": "background-jobs",
+      "file": "background-jobs/index.md"
+    },
+    {
+      "title": "The CMSMS Forge",
+      "path": "cmsms-forge",
+      "pages": [
+        {
+          "title": "Module Info File (moduleinfo.ini)",
+          "file": "cmsms-forge/module-info-file.md"
+        },
+        {
+          "title": "Module XML Packaging",
+          "file": "cmsms-forge/module-xml-packaging.md"
+        },
+        {
+          "title": "Submitting Your Module",
+          "file": "cmsms-forge/submitting-your-module.md"
+        }
+      ]
+    },
+    {
+      "title": "Database Operations",
+      "path": "database",
+      "pages": [
+        {
+          "title": "Creating Tables",
+          "file": "database/creating-tables.md"
+        },
+        {
+          "title": "Schema Management",
+          "file": "database/schema-management.md"
+        },
+        {
+          "title": "Using ADODB",
+          "file": "database/using-adodb.md"
+        }
+      ]
+    },
+    {
+      "title": "Developer Tools",
+      "path": "developer-tools",
+      "pages": [
+        {
+          "title": "CMSMS Scanner",
+          "file": "developer-tools/cmsms-scanner.md"
+        },
+        {
+          "title": "Module Check",
+          "file": "developer-tools/module-check.md"
+        }
+      ]
+    },
+    {
+      "title": "Events",
+      "path": "events",
+      "pages": [
+        {
+          "title": "Core Events Reference",
+          "file": "events/core-events-reference.md"
+        },
+        {
+          "title": "Handling Events",
+          "file": "events/handling-events.md"
+        },
+        {
+          "title": "Hooks (HookManager)",
+          "file": "events/hooks.md"
+        },
+        {
+          "title": "Sending Events",
+          "file": "events/sending-events.md"
+        }
+      ]
+    },
+    {
+      "title": "Module Guidelines",
+      "path": "guidelines",
+      "pages": [
+        {
+          "title": "CMSMS Compliance Guidelines",
+          "file": "guidelines/cmsms-compliance.md"
+        },
+        {
+          "title": "Code Quality Guidelines",
+          "file": "guidelines/quality-rules.md"
+        },
+        {
+          "title": "Security Guidelines",
+          "file": "guidelines/security-rules.md"
+        }
+      ]
+    },
+    {
+      "title": "HTTP and REST APIs",
+      "path": "http-and-rest-apis",
+      "file": "http-and-rest-apis/index.md"
+    },
+    {
+      "title": "Internationalization",
+      "path": "internationalization",
+      "pages": [
+        {
+          "title": "Language Files",
+          "file": "internationalization/language-files.md"
+        },
+        {
+          "title": "Using Lang Strings",
+          "file": "internationalization/using-lang-strings.md"
+        }
+      ]
+    },
+    {
+      "title": "Introduction to Module Development",
+      "path": "intro",
+      "pages": [
+        {
+          "title": "What is a Module?",
+          "file": "intro/what-is-a-module.md"
+        }
+      ]
+    },
+    {
+      "title": "Module Basics",
+      "path": "module-basics",
+      "pages": [
+        {
+          "title": "Best Practices",
+          "file": "module-basics/best-practices.md"
+        },
+        {
+          "title": "Header Requirements",
+          "file": "module-basics/header-requirements.md"
+        },
+        {
+          "title": "Including a Software License",
+          "file": "module-basics/including-a-software-license.md"
+        },
+        {
+          "title": "Install / Uninstall / Upgrade Methods",
+          "file": "module-basics/install-uninstall-upgrade.md"
+        },
+        {
+          "title": "Module Directories and Paths",
+          "file": "module-basics/module-directories-and-paths.md"
+        }
+      ]
+    },
+    {
+      "title": "Module Preferences",
+      "path": "preferences",
+      "pages": [
+        {
+          "title": "Module Preferences API",
+          "file": "preferences/module-preferences-api.md"
+        },
+        {
+          "title": "Site and User Preferences",
+          "file": "preferences/site-preferences.md"
+        }
+      ]
+    },
+    {
+      "title": "Module Security",
+      "path": "security",
+      "pages": [
+        {
+          "title": "Checking Permissions",
+          "file": "security/checking-permissions.md"
+        },
+        {
+          "title": "Data Validation",
+          "file": "security/data-validation.md"
+        },
+        {
+          "title": "Nonces (CSRF Protection)",
+          "file": "security/nonces.md"
+        },
+        {
+          "title": "Securing (Sanitizing) Input",
+          "file": "security/securing-input.md"
+        },
+        {
+          "title": "Securing (Escaping) Output",
+          "file": "security/securing-output.md"
+        }
+      ]
+    },
+    {
+      "title": "Smarty Tags",
+      "path": "smarty-tags",
+      "pages": [
+        {
+          "title": "Content Block Tags",
+          "file": "smarty-tags/content-block-tags.md"
+        },
+        {
+          "title": "Plugin Tags",
+          "file": "smarty-tags/plugin-tags.md"
+        },
+        {
+          "title": "Tag Parameters",
+          "file": "smarty-tags/tag-parameters.md"
+        }
+      ]
+    },
+    {
+      "title": "Templates",
+      "path": "templates",
+      "pages": [
+        {
+          "title": "Admin Templates",
+          "file": "templates/admin-templates.md"
+        },
+        {
+          "title": "Design Manager Integration",
+          "file": "templates/design-manager.md"
+        },
+        {
+          "title": "Frontend Templates",
+          "file": "templates/frontend-templates.md"
+        },
+        {
+          "title": "Smarty Templates",
+          "file": "templates/smarty-templates.md"
+        }
+      ]
+    },
+    {
+      "title": "Tutorial: Building a Holidays Module",
+      "path": "tutorial",
+      "pages": [
+        {
+          "title": "Tutorial: Admin CRUD",
+          "file": "tutorial/admin-crud.md"
+        },
+        {
+          "title": "Tutorial: Frontend Views",
+          "file": "tutorial/frontend-views.md"
+        },
+        {
+          "title": "Tutorial: Getting Started",
+          "file": "tutorial/getting-started.md"
+        },
+        {
+          "title": "Tutorial: Install, Uninstall, and the Database",
+          "file": "tutorial/install-and-database.md"
+        },
+        {
+          "title": "Tutorial: Pretty URLs and Routes",
+          "file": "tutorial/pretty-urls.md"
+        },
+        {
+          "title": "Tutorial: Search, Lazy Loading, and AJAX",
+          "file": "tutorial/search-and-more.md"
+        },
+        {
+          "title": "Tutorial: Holidays Starter Pack",
+          "file": "tutorial/starter-pack.md"
+        },
+        {
+          "title": "Tutorial: The Model Class",
+          "file": "tutorial/the-model-class.md"
+        }
+      ]
+    },
+    {
+      "title": "Users and Permissions",
+      "path": "users",
+      "pages": [
+        {
+          "title": "Custom Permissions",
+          "file": "users/custom-permissions.md"
+        },
+        {
+          "title": "Roles and Permissions",
+          "file": "users/roles-and-permissions.md"
+        }
+      ]
+    }
+  ]
+}
