@@ -28,18 +28,18 @@ Modules are larger sets of code that solve a complete problem. They can create a
 
 | Capability | Plugin | UDT | Module |
 | --- | --- | --- | --- |
-| A single PHP function | Yes | Yes |  |
-| Can have an admin interface |  |  | Yes |
-| Can handle events |  | Yes | Yes |
-| Has install and uninstall |  |  | Yes |
-| Handles routing (pretty URLs) |  |  | Yes |
-| Can be shared on the Forge |  |  | Yes |
-| Can create events |  |  | Yes |
-| Can create page types |  |  | Yes |
-| Can create PseudoCron tasks |  |  | Yes |
-| Can be modifier / compiler / block | Yes |  | Yes\* |
-| Provide multiple plugins |  |  | Yes |
-| Provide functions and classes for other modules |  |  | Yes |
+| A single PHP function | Yes | Yes | — |
+| Can have an admin interface | No | No | Yes |
+| Can handle events | No | Yes | Yes |
+| Has install and uninstall | No | No | Yes |
+| Handles routing (pretty URLs) | No | No | Yes |
+| Can be shared on the Forge | No | No | Yes |
+| Can create events | No | No | Yes |
+| Can create page types | No | No | Yes |
+| Can create PseudoCron tasks | No | No | Yes |
+| Can be modifier / compiler / block | Yes | No | Yes* |
+| Provide multiple plugins | No | No | Yes |
+| Provide functions and classes for other modules | No | No | Yes |
 
 \* Modules can register multiple different plugins of different types, though usually it is just a function plugin.
 
