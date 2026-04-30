@@ -1,7 +1,8 @@
 {
   "landing": {
     "title": "Module Handbook",
-    "file": "home.md"
+    "file": "home.md",
+    "description": "Welcome to the CMS Made Simple Module Handbook. This resource is the definitive guide for developers who want to build, maintain, and distribute modules for ..."
   },
   "chapters": [
     {
@@ -10,9 +11,11 @@
       "pages": [
         {
           "title": "Module Development",
-          "file": "intro/what-is-a-module.md"
+          "file": "intro/what-is-a-module.md",
+          "description": "A module is a self-contained package of PHP code that extends CMS Made Simple. Modules can create admin interfaces, display content on the frontend, manage d..."
         }
-      ]
+      ],
+      "description": "CMS Made Simple is designed to be extended through modules. Whether you need a contact form, a photo gallery, an e-commerce system, or a custom admin tool — ..."
     },
     {
       "title": "Module Basics",
@@ -20,25 +23,31 @@
       "pages": [
         {
           "title": "Header Requirements",
-          "file": "module-basics/header-requirements.md"
+          "file": "module-basics/header-requirements.md",
+          "description": "Every CMSMS module is a PHP class that extends CMSModule. The base class provides a set of virtual methods that you override to tell CMSMS about your module ..."
         },
         {
           "title": "Install / Uninstall / Upgrade Methods",
-          "file": "module-basics/install-uninstall-upgrade.md"
+          "file": "module-basics/install-uninstall-upgrade.md",
+          "description": "CMSMS modules have three lifecycle files that run at specific points: installation, uninstallation, and upgrade. These files are placed in the root of your m..."
         },
         {
           "title": "Module Directories and Paths",
-          "file": "module-basics/module-directories-and-paths.md"
+          "file": "module-basics/module-directories-and-paths.md",
+          "description": "CMSMS expects modules to follow a specific directory layout. Understanding this structure — and the API methods for referencing paths — is essential for writ..."
         },
         {
           "title": "Including a Software License",
-          "file": "module-basics/including-a-software-license.md"
+          "file": "module-basics/including-a-software-license.md",
+          "description": "All CMSMS modules distributed through the Forge must be released under a GPL-compatible license. This is a requirement of the CMS Made Simple project itself,..."
         },
         {
           "title": "Best Practices",
-          "file": "module-basics/best-practices.md"
+          "file": "module-basics/best-practices.md",
+          "description": "Following these conventions will make your module more secure, maintainable, and compatible with the CMSMS ecosystem. Many of these patterns are enforced by ..."
         }
-      ]
+      ],
+      "description": "This chapter covers the fundamental building blocks of every CMSMS module: the required class methods that tell CMSMS about your module, the lifecycle files ..."
     },
     {
       "title": "Module Security",
@@ -46,25 +55,31 @@
       "pages": [
         {
           "title": "Checking Permissions",
-          "file": "security/checking-permissions.md"
+          "file": "security/checking-permissions.md",
+          "description": "CMSMS has a built-in permission system that controls what admin users can do. Your module should create its own permissions during installation and check the..."
         },
         {
           "title": "Data Validation",
-          "file": "security/data-validation.md"
+          "file": "security/data-validation.md",
+          "description": "Data validation is the process of verifying that incoming data meets your expectations before you use it. Validation answers the question: \"Is this data what..."
         },
         {
           "title": "Nonces",
-          "file": "security/nonces.md"
+          "file": "security/nonces.md",
+          "description": "Cross-Site Request Forgery (CSRF) is an attack where a malicious website tricks an authenticated user's browser into submitting a request to your CMSMS site ..."
         },
         {
           "title": "Securing (Escaping) Output",
-          "file": "security/securing-output.md"
+          "file": "security/securing-output.md",
+          "description": "Escaping output means converting special characters in data into safe representations before displaying them in HTML, JavaScript, or other contexts. This pre..."
         },
         {
           "title": "Securing (Sanitizing) Input",
-          "file": "security/securing-input.md"
+          "file": "security/securing-input.md",
+          "description": "Input sanitization is the process of cleaning data before you use it — removing or neutralizing anything that shouldn't be there. While validation checks whe..."
         }
-      ]
+      ],
+      "description": "Security is not optional. Every module that accepts user input, displays data, or interacts with the database must implement proper security measures. A sing..."
     },
     {
       "title": "Events",
@@ -72,21 +87,26 @@
       "pages": [
         {
           "title": "Sending Events",
-          "file": "events/sending-events.md"
+          "file": "events/sending-events.md",
+          "description": "Your module can define its own events that other modules or UDTs can listen for. This allows other developers to extend your module's behavior without modify..."
         },
         {
           "title": "Handling Events",
-          "file": "events/handling-events.md"
+          "file": "events/handling-events.md",
+          "description": "Your module can listen for events sent by other modules or by the CMSMS core. When the event fires, CMSMS calls your module's DoEvent() method with the event..."
         },
         {
           "title": "Core Events Reference",
-          "file": "events/core-events-reference.md"
+          "file": "events/core-events-reference.md",
+          "description": "The CMSMS core sends events at key points during content management, user administration, and page rendering. Your module can handle any of these events by r..."
         },
         {
           "title": "Hooks (HookManager)",
-          "file": "events/hooks.md"
+          "file": "events/hooks.md",
+          "description": "CMSMS 2.2 introduced the HookManager — a modern hook system that complements the older Events API. Hooks support closures, callable functions, priority level..."
         }
-      ]
+      ],
+      "description": "Events are CMSMS's hook system — they allow modules to communicate with each other and with the core without creating tight dependencies. A module can send a..."
     },
     {
       "title": "Admin Interface",
@@ -94,21 +114,26 @@
       "pages": [
         {
           "title": "Admin Actions",
-          "file": "admin-interface/admin-actions.md"
+          "file": "admin-interface/admin-actions.md",
+          "description": "In CMSMS, controllers are called \"actions.\" Each action is a separate PHP file in your module directory that handles a specific request. When an admin action..."
         },
         {
           "title": "Admin Tabs and Navigation",
-          "file": "admin-interface/admin-tabs-and-navigation.md"
+          "file": "admin-interface/admin-tabs-and-navigation.md",
+          "description": "CMSMS provides built-in support for tabbed interfaces in admin panels, control over where your module appears in the admin navigation, and the ability to add..."
         },
         {
           "title": "Admin Forms and Smarty Plugins",
-          "file": "admin-interface/admin-forms.md"
+          "file": "admin-interface/admin-forms.md",
+          "description": "CMSMS provides a set of Smarty plugins specifically designed for building admin forms. These plugins handle action IDs, CSRF tokens, URL generation, and admi..."
         },
         {
           "title": "AJAX in the Admin",
-          "file": "admin-interface/ajax.md"
+          "file": "admin-interface/ajax.md",
+          "description": "Many modern admin interfaces load data asynchronously using AJAX. CMSMS supports this through regular module actions that suppress the admin theme wrapper an..."
         }
-      ]
+      ],
+      "description": "Most CMSMS modules include an admin panel — a set of screens within the CMSMS admin console where site administrators can manage the module's data and settin..."
     },
     {
       "title": "Smarty Tags",
@@ -116,17 +141,21 @@
       "pages": [
         {
           "title": "Content Block Tags",
-          "file": "smarty-tags/content-block-tags.md"
+          "file": "smarty-tags/content-block-tags.md",
+          "description": "CMSMS page templates use content block tags like {content} to define editable regions. Modules can create custom content block types that appear as special f..."
         },
         {
           "title": "Plugin Tags",
-          "file": "smarty-tags/plugin-tags.md"
+          "file": "smarty-tags/plugin-tags.md",
+          "description": "There are two ways to call a module from a Smarty template: the generic {cms_module} tag, and a registered shorthand tag using the module's own name. Your mo..."
         },
         {
           "title": "Tag Parameters",
-          "file": "smarty-tags/tag-parameters.md"
+          "file": "smarty-tags/tag-parameters.md",
+          "description": "When your module is called from a Smarty template, parameters can be passed to it. On the frontend, these parameters must be registered for security. On the ..."
         }
-      ]
+      ],
+      "description": "Modules can register Smarty tags that content editors use in page templates and content blocks. This is how modules expose their frontend functionality — a c..."
     },
     {
       "title": "Preferences",
@@ -134,13 +163,16 @@
       "pages": [
         {
           "title": "Module Preferences API",
-          "file": "preferences/module-preferences-api.md"
+          "file": "preferences/module-preferences-api.md",
+          "description": "Module preferences are key-value pairs scoped to your module. They are the most common way to store module settings — items per page, default templates, feat..."
         },
         {
           "title": "Site and User Preferences",
-          "file": "preferences/site-preferences.md"
+          "file": "preferences/site-preferences.md",
+          "description": "Beyond module-scoped preferences, CMSMS provides two additional preference systems: site preferences (global settings shared across the entire installation) ..."
         }
-      ]
+      ],
+      "description": "CMSMS provides three levels of preferences storage for modules: module preferences (scoped to your module), site preferences (global), and user preferences (..."
     },
     {
       "title": "Database Operations",
@@ -148,17 +180,21 @@
       "pages": [
         {
           "title": "Using ADODB",
-          "file": "database/using-adodb.md"
+          "file": "database/using-adodb.md",
+          "description": "CMSMS creates a single database connection per request. You access it through the module's GetDb() method or the static \\cmsutils::getdb() utility. All datab..."
         },
         {
           "title": "Creating Tables",
-          "file": "database/creating-tables.md"
+          "file": "database/creating-tables.md",
+          "description": "CMSMS provides the ADODB DataDictionary class for creating, altering, and dropping database tables in a database-agnostic way. While CMSMS only supports MySQ..."
         },
         {
           "title": "Schema Management",
-          "file": "database/schema-management.md"
+          "file": "database/schema-management.md",
+          "description": "As your module evolves, you'll need to add columns, create new tables, and migrate data. CMSMS handles this through the method.upgrade.php file. This page al..."
         }
-      ]
+      ],
+      "description": "CMSMS uses a modified version of adodb-lite for database abstraction. While only MySQL is supported, the abstraction layer provides parameterized queries, a ..."
     },
     {
       "title": "Templates",
@@ -166,21 +202,26 @@
       "pages": [
         {
           "title": "Smarty Templates",
-          "file": "templates/smarty-templates.md"
+          "file": "templates/smarty-templates.md",
+          "description": "Every module action that produces HTML output should do so through a Smarty template. Templates live in the templates/ directory of your module and are loade..."
         },
         {
           "title": "Admin Templates",
-          "file": "templates/admin-templates.md"
+          "file": "templates/admin-templates.md",
+          "description": "Admin templates render the interface within the CMSMS admin console. They follow specific conventions for layout, forms, and navigation that ensure consisten..."
         },
         {
           "title": "Frontend Templates",
-          "file": "templates/frontend-templates.md"
+          "file": "templates/frontend-templates.md",
+          "description": "Frontend templates render your module's output on the public website. Unlike admin templates, frontend templates have no prescribed style guide — the website..."
         },
         {
           "title": "Design Manager Integration",
-          "file": "templates/design-manager.md"
+          "file": "templates/design-manager.md",
+          "description": "By default, module templates are .tpl files stored in the templates/ directory. This works well for development, but for modules intended for public distribu..."
         }
-      ]
+      ],
+      "description": "CMSMS uses the Smarty template engine for all HTML output — both in the admin panel and on the frontend. Module templates are .tpl files stored in your modul..."
     },
     {
       "title": "Users and Permissions",
@@ -188,13 +229,16 @@
       "pages": [
         {
           "title": "Roles and Permissions",
-          "file": "users/roles-and-permissions.md"
+          "file": "users/roles-and-permissions.md",
+          "description": "CMSMS uses a simple but effective permission model: admin users belong to groups, and permissions are assigned to groups. A user has a permission if any of t..."
         },
         {
           "title": "Custom Permissions",
-          "file": "users/custom-permissions.md"
+          "file": "users/custom-permissions.md",
+          "description": "Most modules need at least one custom permission to control who can access their admin panel. Some modules define multiple permissions for different access l..."
         }
-      ]
+      ],
+      "description": "CMSMS has a built-in system of admin users, groups, and permissions. Modules interact with this system to control access to their features and, in some cases..."
     },
     {
       "title": "Internationalization",
@@ -202,13 +246,16 @@
       "pages": [
         {
           "title": "Language Files",
-          "file": "internationalization/language-files.md"
+          "file": "internationalization/language-files.md",
+          "description": "Language files store all human-readable strings used by your module. The base language file is lang/en_US.php — it serves as both the English translation and..."
         },
         {
           "title": "Using Lang Strings",
-          "file": "internationalization/using-lang-strings.md"
+          "file": "internationalization/using-lang-strings.md",
+          "description": "The Lang() method is how you access translated strings throughout your module — in PHP action files, module class methods, and Smarty templates."
         }
-      ]
+      ],
+      "description": "CMSMS modules can be translated into any language through language files and the CMSMS Translation Center. This chapter covers how to create language files, ..."
     },
     {
       "title": "Assets and Resources",
@@ -216,23 +263,28 @@
       "pages": [
         {
           "title": "Loading CSS and JavaScript",
-          "file": "assets-and-resources/loading-css-and-javascript.md"
+          "file": "assets-and-resources/loading-css-and-javascript.md",
+          "description": "Modules can include their own stylesheets and JavaScript files for both admin and frontend use. The approach differs between the two contexts."
         },
         {
           "title": "Images and Icons",
-          "file": "assets-and-resources/images-and-icons.md"
+          "file": "assets-and-resources/images-and-icons.md",
+          "description": "Modules use images for admin interface icons, frontend content, and Forge listing screenshots. Each has different conventions."
         }
-      ]
+      ],
+      "description": "Modules often need static assets — stylesheets, JavaScript files, images, and icons. This chapter covers where to put them, how to load them in admin and fro..."
     },
     {
       "title": "HTTP and REST APIs",
       "path": "http-and-rest-apis",
-      "file": "http-and-rest-apis/index.md"
+      "file": "http-and-rest-apis/index.md",
+      "description": "Many modules need to communicate with external services — payment gateways, email providers, analytics platforms, AI services, social media APIs, and more. T..."
     },
     {
       "title": "Background Jobs",
       "path": "background-jobs",
-      "file": "background-jobs/index.md"
+      "file": "background-jobs/index.md",
+      "description": "CMSMS 2.2 introduced an asynchronous job system that allows modules to schedule background tasks — one-time jobs or recurring cron jobs. Jobs are managed by ..."
     },
     {
       "title": "Guidelines",
@@ -240,17 +292,21 @@
       "pages": [
         {
           "title": "CMSMS Compliance Guidelines",
-          "file": "guidelines/cmsms-compliance.md"
+          "file": "guidelines/cmsms-compliance.md",
+          "description": "These rules ensure your module follows CMS Made Simple conventions for naming, structure, API usage, and compatibility. Violations can cause conflicts with o..."
         },
         {
           "title": "Security Guidelines",
-          "file": "guidelines/security-rules.md"
+          "file": "guidelines/security-rules.md",
+          "description": "These rules detect security vulnerabilities in your module code — SQL injection, XSS, file inclusion, command injection, CSRF, hardcoded credentials, and oth..."
         },
         {
           "title": "Code Quality Guidelines",
-          "file": "guidelines/quality-rules.md"
+          "file": "guidelines/quality-rules.md",
+          "description": "These rules flag code quality issues that affect maintainability, performance, and reliability. While not security vulnerabilities, they indicate patterns th..."
         }
-      ]
+      ],
+      "description": "These guidelines define the standards every CMSMS module should meet before distribution. They are based on the 68 automated rules enforced by Module Check a..."
     },
     {
       "title": "Tutorial",
@@ -258,37 +314,46 @@
       "pages": [
         {
           "title": "Getting Started",
-          "file": "tutorial/getting-started.md"
+          "file": "tutorial/getting-started.md",
+          "description": "In this first chapter, we create the module directory, the module class file with all the required virtual methods, and the language file."
         },
         {
           "title": "Install, Uninstall, and the Database",
-          "file": "tutorial/install-and-database.md"
+          "file": "tutorial/install-and-database.md",
+          "description": "Our module needs a database table to store holidays and a permission to control admin access. We create these in the install routine and remove them in the u..."
         },
         {
           "title": "The Model Class",
-          "file": "tutorial/the-model-class.md"
+          "file": "tutorial/the-model-class.md",
+          "description": "Before building the admin interface, we create a PHP class to represent a single holiday record. This keeps our data access code clean, reusable, and separat..."
         },
         {
           "title": "Admin CRUD",
-          "file": "tutorial/admin-crud.md"
+          "file": "tutorial/admin-crud.md",
+          "description": "Now we build the admin interface: a list of holidays with add, edit, and delete functionality. This involves creating action files, Smarty templates, a query..."
         },
         {
           "title": "Frontend Views",
-          "file": "tutorial/frontend-views.md"
+          "file": "tutorial/frontend-views.md",
+          "description": "Now we add the frontend — a summary view that lists published holidays, and a detail view that shows a single holiday. This involves registering parameters, ..."
         },
         {
           "title": "Pretty URLs and Routes",
-          "file": "tutorial/pretty-urls.md"
+          "file": "tutorial/pretty-urls.md",
+          "description": "By default, module URLs look like index.php?mact=Holidays,cntnt01,detail,0&hid=5. Pretty URLs transform these into something like /Holidays/99/5/Christmas. T..."
         },
         {
           "title": "Search, Lazy Loading, and AJAX",
-          "file": "tutorial/search-and-more.md"
+          "file": "tutorial/search-and-more.md",
+          "description": "In this final chapter, we add three enhancements: integration with the CMSMS Search module, lazy loading for the admin, and an AJAX-powered preview on the fr..."
         },
         {
           "title": "Holidays Starter Pack",
-          "file": "tutorial/starter-pack.md"
+          "file": "tutorial/starter-pack.md",
+          "description": "To help you follow along with the tutorial, we've prepared a ready-to-install starter pack containing the complete Holidays module. You can download it, extr..."
         }
-      ]
+      ],
+      "description": "This tutorial walks you through building a complete CMSMS module from scratch. By the end, you will have a fully functional \"Holidays\" module with an admin C..."
     },
     {
       "title": "Forge",
@@ -296,13 +361,16 @@
       "pages": [
         {
           "title": "Submitting Your Module",
-          "file": "cmsms-forge/submitting-your-module.md"
+          "file": "cmsms-forge/submitting-your-module.md",
+          "description": "Before submitting your module to the Forge, ensure it meets the quality standards expected by the CMSMS community."
         },
         {
           "title": "Module XML Packaging",
-          "file": "cmsms-forge/module-xml-packaging.md"
+          "file": "cmsms-forge/module-xml-packaging.md",
+          "description": "CMSMS distributes modules as XML packages. When you install a module through Extensions > Module Manager, CMSMS downloads an XML file that contains all of th..."
         }
-      ]
+      ],
+      "description": "The CMSMS Forge (dev.cmsmadesimple.org) is the official repository for sharing CMSMS modules with the community. This chapter covers how to prepare, package,..."
     },
     {
       "title": "Developer Tools",
@@ -310,13 +378,16 @@
       "pages": [
         {
           "title": "Module Check",
-          "file": "developer-tools/module-check.md"
+          "file": "developer-tools/module-check.md",
+          "description": "Module Check is a diagnostic module that scans installed CMSMS modules for compliance with best practices, security patterns, deprecated API usage, and struc..."
         },
         {
           "title": "CMSMS Scanner",
-          "file": "developer-tools/cmsms-scanner.md"
+          "file": "developer-tools/cmsms-scanner.md",
+          "description": "CMSMS Scanner is a standalone Python-based security scanner and audit tool for CMS Made Simple modules. It performs deep analysis of PHP and TPL files agains..."
         }
-      ]
+      ],
+      "description": "CMSMS module development is supported by diagnostic tools that scan your code for best practices, security issues, and structural compliance. Use these tools..."
     }
   ]
 }
