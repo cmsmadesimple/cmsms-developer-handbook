@@ -457,11 +457,6 @@
           "description": "CMSMS module development is supported by diagnostic tools that scan your code for best practices, security issues, and structural compliance. Use these tools before submitting to the Forge."
         },
         {
-          "title": "Module Check",
-          "file": "developer-tools/module-check.md",
-          "description": "Module Check is a diagnostic module that scans installed CMSMS modules for compliance with best practices, security patterns, deprecated API usage, and struc..."
-        },
-        {
           "title": "CMSMS Scanner",
           "file": "developer-tools/cmsms-scanner.md",
           "description": "CMSMS Scanner is a standalone Python-based security scanner and audit tool for CMS Made Simple modules. It performs deep analysis of PHP and TPL files agains..."
