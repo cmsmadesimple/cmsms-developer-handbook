@@ -25,8 +25,8 @@ To include CSS or JavaScript on admin pages when your module's action is display
 public function GetHeaderHTML()
 {
     $url = $this->GetModuleURLPath();
-    $out = '&lt;link rel="stylesheet" href="' . $url . '/css/admin.css" /&gt;' . "\n";
-    $out .= '&lt;script src="' . $url . '/js/admin.js"&gt;&lt;/script&gt;' . "\n";
+    $out = '<link rel="stylesheet" href="' . $url . '/css/admin.css" />' . "\n";
+    $out .= '<script src="' . $url . '/js/admin.js"></script>' . "\n";
     return $out;
 }
 ```
@@ -50,8 +50,8 @@ public function AdminStyle()
 You can also include assets directly in your admin Smarty templates:
 
 ```
-&lt;link rel="stylesheet" href="{$mod->GetModuleURLPath()}/css/admin.css" /&gt;
-&lt;script src="{$mod->GetModuleURLPath()}/js/admin.js"&gt;&lt;/script&gt;
+<link rel="stylesheet" href="{$mod->GetModuleURLPath()}/css/admin.css" />
+<script src="{$mod->GetModuleURLPath()}/js/admin.js"></script>
 ```
 
 This approach is simpler but less clean than `GetHeaderHTML()` — the assets end up in the page body rather than the `<head>`.
@@ -61,8 +61,8 @@ This approach is simpler but less clean than `GetHeaderHTML()` — the assets en
 For frontend templates, include assets using the module URL path:
 
 ```
-&lt;link rel="stylesheet" href="{$mod->GetModuleURLPath()}/css/frontend.css" /&gt;
-&lt;script src="{$mod->GetModuleURLPath()}/js/frontend.js"&gt;&lt;/script&gt;
+<link rel="stylesheet" href="{$mod->GetModuleURLPath()}/css/frontend.css" />
+<script src="{$mod->GetModuleURLPath()}/js/frontend.js"></script>
 ```
 
 However, for distributable modules, think carefully before including frontend CSS — see the best practices section below.
@@ -74,11 +74,11 @@ However, for distributable modules, think carefully before including frontend CS
 jQuery and jQuery UI are automatically available in the CMSMS admin console. You do not need to include them — just use `$` in your admin templates:
 
 ```
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
 $(document).ready(function(){
     // jQuery is already loaded
 });
-&lt;/script&gt;
+</script>
 ```
 
 #### Frontend
@@ -86,10 +86,10 @@ $(document).ready(function(){
 jQuery is not automatically included on the frontend. If your module needs it, instruct the site developer to add `{cms_jquery}` to the `<head>` of their page template:
 
 ```
-&lt;head&gt;
+<head>
   {cms_jquery}
   ...
-&lt;/head&gt;
+</head>
 ```
 
 Do not include jQuery yourself from a CDN or your module directory — this can cause conflicts with other modules or the site's existing jQuery installation.
@@ -104,7 +104,7 @@ $this->GetHeaderHTML(); // loads default assets
 
 // Or add action-specific assets
 $url = $this->GetModuleURLPath();
-$headerhtml = '&lt;script src="' . $url . '/js/chart-library.js"&gt;&lt;/script&gt;';
+$headerhtml = '<script src="' . $url . '/js/chart-library.js"></script>';
 // Pass to template
 $tpl->assign('extra_head', $headerhtml);
 ```

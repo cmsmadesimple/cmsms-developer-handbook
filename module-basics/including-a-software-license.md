@@ -46,7 +46,7 @@ You can obtain the full GPLv3 text from <https://www.gnu.org/licenses/gpl-3.0.tx
 Each PHP file should include a brief header identifying the module, author, copyright, and license:
 
 ```php
-&lt;?php
+<?php
 #--------------------------------------------------
 # Module: Holidays
 # Author: Your Name

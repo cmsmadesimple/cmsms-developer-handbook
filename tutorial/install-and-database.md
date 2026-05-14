@@ -7,7 +7,7 @@ Our module needs a database table to store holidays and a permission to control 
 Create `method.install.php` in the `Holidays/` directory:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 
 // Create the permission
@@ -41,7 +41,7 @@ $dict->ExecuteSQLArray($sqlarray);
 Create `method.uninstall.php` in the `Holidays/` directory:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 
 // Remove the permission

@@ -9,7 +9,7 @@ CMSMS protects against CSRF through hidden tokens embedded in forms. When you us
 Imagine an admin user is logged into CMSMS. While browsing another site, that site contains a hidden form or image tag that submits a request to:
 
 ```
-https://yoursite.com/admin/moduleinterface.php?action=delete_holiday&amp;hid=5
+https://yoursite.com/admin/moduleinterface.php?action=delete_holiday&hid=5
 ```
 
 Because the admin's browser still has a valid CMSMS session cookie, the request is processed as if the admin performed it. Without CSRF protection, the holiday would be deleted.
@@ -20,9 +20,9 @@ The simplest and recommended way to protect your forms is to use the `{form_star
 
 ```smarty
 {form_start}
-  &lt;!-- your form fields --&gt;
-  &lt;input type="submit" name="{$actionid}submit" value="{$mod->Lang('submit')}" /&gt;
-  &lt;input type="submit" name="{$actionid}cancel" value="{$mod->Lang('cancel')}" /&gt;
+  <!-- your form fields -->
+  <input type="submit" name="{$actionid}submit" value="{$mod->Lang('submit')}" />
+  <input type="submit" name="{$actionid}cancel" value="{$mod->Lang('cancel')}" />
 {form_end}
 ```
 
@@ -53,28 +53,28 @@ For admin forms, CMSMS validates the CSRF token automatically when the form is s
 
 Delete links that use GET requests (clicking an icon in a list) are more vulnerable to CSRF because they don't go through a form. Protect them with a JavaScript confirmation and consider using POST-based deletion instead:
 
-```html
-&lt;!-- Approach 1: JavaScript confirmation (basic protection) --&gt;
-&lt;script type="text/javascript"&gt;
+```smarty
+<!-- Approach 1: JavaScript confirmation (basic protection) -->
+<script type="text/javascript">
 $(document).ready(function(){
     $('a.del_item').click(function(){
         return confirm('{$mod->Lang('confirm_delete')}');
     });
 });
-&lt;/script&gt;
+</script>
 
-&lt;a class="del_item"
+<a class="del_item"
    href="{cms_action_url action=delete_holiday hid=$holiday->id}"
-   title="{$mod->Lang('delete')}"&gt;{admin_icon icon='delete.gif'}&lt;/a&gt;
+   title="{$mod->Lang('delete')}">{admin_icon icon='delete.gif'}</a>
 ```
 
 For stronger protection, use a small POST form for each delete action instead of a GET link:
 
 ```smarty
-&lt;!-- Approach 2: POST form with CSRF token (stronger) --&gt;
+<!-- Approach 2: POST form with CSRF token (stronger) -->
 {form_start action='delete_holiday' hid=$holiday->id}
-  &lt;button type="submit" onclick="return confirm('{$mod->Lang('confirm_delete')}')"
-          title="{$mod->Lang('delete')}"&gt;{admin_icon icon='delete.gif'}&lt;/button&gt;
+  <button type="submit" onclick="return confirm('{$mod->Lang('confirm_delete')}')"
+          title="{$mod->Lang('delete')}">{admin_icon icon='delete.gif'}</button>
 {form_end}
 ```
 
@@ -86,9 +86,9 @@ This means frontend forms created with `{form_start}` are not CSRF-protected by 
 
 ```smarty
 {form_start action='submit_entry'}
-  &lt;!-- No CSRF token is included here --&gt;
-  &lt;input type="text" name="{$actionid}name" value="" /&gt;
-  &lt;input type="submit" name="{$actionid}submit" value="Submit" /&gt;
+  <!-- No CSRF token is included here -->
+  <input type="text" name="{$actionid}name" value="" />
+  <input type="submit" name="{$actionid}submit" value="Submit" />
 {form_end}
 ```
 
@@ -96,8 +96,8 @@ To add CSRF protection to frontend forms, use the `{xt_form_csrf}` tag provided 
 
 ```smarty
 {form_start action='submit_entry'}{xt_form_csrf}
-  &lt;input type="text" name="{$actionid}name" value="" /&gt;
-  &lt;input type="submit" name="{$actionid}submit" value="Submit" /&gt;
+  <input type="text" name="{$actionid}name" value="" />
+  <input type="submit" name="{$actionid}submit" value="Submit" />
 {form_end}
 ```
 

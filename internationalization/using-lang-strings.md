@@ -21,16 +21,16 @@ $message = $this->Lang('welcome_user', $username, $role);
 
 ```html
 {* Simple string *}
-&lt;h3&gt;{$mod->Lang('add_holiday')}&lt;/h3&gt;
+<h3>{$mod->Lang('add_holiday')}</h3>
 
 {* As a button label *}
-&lt;input type="submit" name="{$actionid}submit" value="{$mod->Lang('submit')}" /&gt;
+<input type="submit" name="{$actionid}submit" value="{$mod->Lang('submit')}" />
 
 {* In a link *}
-&lt;a href="{$edit_url}" title="{$mod->Lang('edit')}"&gt;{admin_icon icon='edit.gif'}&lt;/a&gt;
+<a href="{$edit_url}" title="{$mod->Lang('edit')}">{admin_icon icon='edit.gif'}</a>
 
 {* With parameters *}
-&lt;p&gt;{$mod->Lang('items_found', $total)}&lt;/p&gt;
+<p>{$mod->Lang('items_found', $total)}</p>
 ```
 
 ### Common Usage Patterns

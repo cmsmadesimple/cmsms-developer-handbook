@@ -55,13 +55,13 @@ CMSMS automatically assigns these variables to your template scope, even when cr
 
 ```html
 {if !empty($items)}
-  &lt;!-- show items --&gt;
+  <!-- show items -->
 {else}
-  &lt;p&gt;{$mod->Lang('no_items')}&lt;/p&gt;
+  <p>{$mod->Lang('no_items')}</p>
 {/if}
 
 {if $item->published}
-  &lt;span class="active"&gt;Published&lt;/span&gt;
+  <span class="active">Published</span>
 {/if}
 ```
 
@@ -69,12 +69,12 @@ CMSMS automatically assigns these variables to your template scope, even when cr
 
 ```smarty
 {foreach $items as $item}
-  &lt;tr&gt;
-    &lt;td&gt;{$item->name|escape}&lt;/td&gt;
-    &lt;td&gt;{$item->the_date|date_format:'%x'}&lt;/td&gt;
-  &lt;/tr&gt;
+  <tr>
+    <td>{$item->name|escape}</td>
+    <td>{$item->the_date|date_format:'%x'}</td>
+  </tr>
 {foreachelse}
-  &lt;tr&gt;&lt;td colspan="2"&gt;{$mod->Lang('no_items')}&lt;/td&gt;&lt;/tr&gt;
+  <tr><td colspan="2">{$mod->Lang('no_items')}</td></tr>
 {/foreach}
 ```
 

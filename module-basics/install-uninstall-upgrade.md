@@ -7,7 +7,7 @@ CMSMS modules have three lifecycle files that run at specific points: installati
 This file runs once when an admin installs your module via Extensions > Module Manager. Use it to create database tables, permissions, preferences, events, and any default data your module needs.
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 
 // Create a permission
@@ -59,7 +59,7 @@ $this->CreatePermission(Holidays::MANAGE_PERM, 'Manage Holidays');
 This file runs when an admin uninstalls your module. It must remove everything your module created — tables, permissions, preferences, events, event handlers, and any other data. The goal is to leave the system in the same state as before the module was installed.
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 
 // Remove the permission
@@ -98,12 +98,12 @@ public function UninstallPreMessage()
 This file runs when CMSMS detects that the version returned by `GetVersion()` is newer than the version stored in the database. It receives the old version number as a variable, allowing you to apply incremental changes:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 
 $db = $this->GetDb();
 
-if (version_compare($oldversion, '1.1', '&lt;')) {
+if (version_compare($oldversion, '1.1', '<')) {
     // Add a new column introduced in version 1.1
     $dict = NewDataDictionary($db);
     $sqlarray = $dict->AddColumnSQL(
@@ -113,12 +113,12 @@ if (version_compare($oldversion, '1.1', '&lt;')) {
     $dict->ExecuteSQLArray($sqlarray);
 }
 
-if (version_compare($oldversion, '1.2', '&lt;')) {
+if (version_compare($oldversion, '1.2', '<')) {
     // Create a new permission introduced in version 1.2
     $this->CreatePermission('view_holidays', 'View Holidays');
 }
 
-if (version_compare($oldversion, '2.0', '&lt;')) {
+if (version_compare($oldversion, '2.0', '<')) {
     // Major schema change in version 2.0
     $db->Execute('ALTER TABLE ' . CMS_DB_PREFIX . 'mod_holidays ADD COLUMN slug C(255)');
     $this->CreateEvent('HolidayAdded');

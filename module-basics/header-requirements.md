@@ -9,7 +9,7 @@ These methods are the first thing you write when creating a new module. CMSMS ca
 Your main module file must be named `ModuleName.module.php` and placed in the `modules/ModuleName/` directory. It must contain a class with the exact same name that extends `CMSModule`:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 
 class Holidays extends CMSModule
@@ -189,7 +189,7 @@ Several of the methods above reference `$this->Lang()`. This method looks up a k
 Language files are stored in `lang/en_US.php` inside your module directory:
 
 ```php
-&lt;?php
+<?php
 $lang['friendlyname'] = 'Holidays';
 $lang['admindescription'] = 'A module for managing and displaying holidays';
 $lang['ask_uninstall'] = 'Are you sure you want to uninstall the Holidays module? All holiday data will be permanently deleted.';
@@ -202,7 +202,7 @@ CMSMS automatically reads this file the first time `Lang()` is called. See [Inte
 Here is a complete, minimal module class with all recommended methods:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 
 class Holidays extends CMSModule

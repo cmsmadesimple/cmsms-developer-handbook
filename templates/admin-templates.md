@@ -5,72 +5,72 @@ Admin templates render the interface within the CMSMS admin console. They follow
 ### A Typical Admin List Template
 
 ```smarty
-&lt;!-- Action links --&gt;
-&lt;div class="pageoptions"&gt;
-  &lt;a href="{cms_action_url action=edit_holiday}"&gt;
+<!-- Action links -->
+<div class="pageoptions">
+  <a href="{cms_action_url action=edit_holiday}">
     {admin_icon icon='newobject.gif'} {$mod->Lang('add_holiday')}
-  &lt;/a&gt;
-&lt;/div&gt;
+  </a>
+</div>
 
 {if !empty($holidays)}
-&lt;table class="pagetable"&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;{$mod->Lang('name')}&lt;/th&gt;
-      &lt;th&gt;{$mod->Lang('date')}&lt;/th&gt;
-      &lt;th class="pageicon"&gt;&lt;/th&gt;
-      &lt;th class="pageicon"&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
+<table class="pagetable">
+  <thead>
+    <tr>
+      <th>{$mod->Lang('name')}</th>
+      <th>{$mod->Lang('date')}</th>
+      <th class="pageicon"></th>
+      <th class="pageicon"></th>
+    </tr>
+  </thead>
+  <tbody>
   {foreach $holidays as $holiday}
     {cms_action_url action=edit_holiday hid=$holiday->id assign='edit_url'}
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href="{$edit_url}"&gt;{$holiday->name|escape}&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;{$holiday->the_date|date_format:'%x'}&lt;/td&gt;
-      &lt;td&gt;&lt;a href="{$edit_url}" title="{$mod->Lang('edit')}"&gt;
-            {admin_icon icon='edit.gif'}&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;a class="del_item"
+    <tr>
+      <td><a href="{$edit_url}">{$holiday->name|escape}</a></td>
+      <td>{$holiday->the_date|date_format:'%x'}</td>
+      <td><a href="{$edit_url}" title="{$mod->Lang('edit')}">
+            {admin_icon icon='edit.gif'}</a></td>
+      <td><a class="del_item"
              href="{cms_action_url action=delete_holiday hid=$holiday->id}"
-             title="{$mod->Lang('delete')}"&gt;
-            {admin_icon icon='delete.gif'}&lt;/a&gt;&lt;/td&gt;
-    &lt;/tr&gt;
+             title="{$mod->Lang('delete')}">
+            {admin_icon icon='delete.gif'}</a></td>
+    </tr>
   {/foreach}
-  &lt;/tbody&gt;
-&lt;/table&gt;
+  </tbody>
+</table>
 {else}
-  &lt;p&gt;{$mod->Lang('no_holidays')}&lt;/p&gt;
+  <p>{$mod->Lang('no_holidays')}</p>
 {/if}
 ```
 
 ### A Typical Admin Form Template
 
 ```smarty
-&lt;h3&gt;{$mod->Lang('edit_holiday')}&lt;/h3&gt;
+<h3>{$mod->Lang('edit_holiday')}</h3>
 
 {form_start hid=$holiday->id}
 
-&lt;div class="pageoverflow"&gt;
-  &lt;p class="pageinput"&gt;
-    &lt;input type="submit" name="{$actionid}submit" value="{$mod->Lang('submit')}" /&gt;
-    &lt;input type="submit" name="{$actionid}cancel" value="{$mod->Lang('cancel')}" /&gt;
-  &lt;/p&gt;
-&lt;/div&gt;
+<div class="pageoverflow">
+  <p class="pageinput">
+    <input type="submit" name="{$actionid}submit" value="{$mod->Lang('submit')}" />
+    <input type="submit" name="{$actionid}cancel" value="{$mod->Lang('cancel')}" />
+  </p>
+</div>
 
-&lt;div class="pageoverflow"&gt;
-  &lt;p class="pagetext"&gt;{$mod->Lang('name')}:&lt;/p&gt;
-  &lt;p class="pageinput"&gt;
-    &lt;input type="text" name="{$actionid}name" value="{$holiday->name|escape}" /&gt;
-  &lt;/p&gt;
-&lt;/div&gt;
+<div class="pageoverflow">
+  <p class="pagetext">{$mod->Lang('name')}:</p>
+  <p class="pageinput">
+    <input type="text" name="{$actionid}name" value="{$holiday->name|escape}" />
+  </p>
+</div>
 
-&lt;div class="pageoverflow"&gt;
-  &lt;p class="pagetext"&gt;{$mod->Lang('description')}:&lt;/p&gt;
-  &lt;p class="pageinput"&gt;
+<div class="pageoverflow">
+  <p class="pagetext">{$mod->Lang('description')}:</p>
+  <p class="pageinput">
     {cms_textarea prefix=$actionid name=description
                   value=$holiday->description enablewysiwyg=true}
-  &lt;/p&gt;
-&lt;/div&gt;
+  </p>
+</div>
 
 {form_end}
 ```
@@ -89,8 +89,8 @@ Admin templates render the interface within the CMSMS admin console. They follow
 
 jQuery and jQuery UI are automatically available in the admin. Add JavaScript directly in your template:
 
-```
-&lt;script type="text/javascript"&gt;
+```smarty
+<script type="text/javascript">
 $(document).ready(function(){
     // Delete confirmation
     $('a.del_item').click(function(){
@@ -104,7 +104,7 @@ $(document).ready(function(){
         }
     });
 });
-&lt;/script&gt;
+</script>
 ```
 
 ### Displaying Messages and Errors
@@ -116,13 +116,13 @@ Messages set with `SetMessage()` and `SetError()` are displayed automatically by
 {* $tpl->assign('errors', $errors); *}
 
 {if !empty($errors)}
-&lt;div class="pageerror"&gt;
-  &lt;ul&gt;
+<div class="pageerror">
+  <ul>
   {foreach $errors as $error}
-    &lt;li&gt;{$error}&lt;/li&gt;
+    <li>{$error}</li>
   {/foreach}
-  &lt;/ul&gt;
-&lt;/div&gt;
+  </ul>
+</div>
 {/if}
 ```
 

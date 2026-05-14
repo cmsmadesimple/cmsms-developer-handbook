@@ -52,23 +52,23 @@ Show or hide UI elements in templates based on the user's permissions:
 ```smarty
 {* In your admin template *}
 {if $mod->CheckPermission('manage_holidays')}
-  &lt;div class="pageoptions"&gt;
-    &lt;a href="{cms_action_url action=edit_holiday}"&gt;
+  <div class="pageoptions">
+    <a href="{cms_action_url action=edit_holiday}">
       {admin_icon icon='newobject.gif'} {$mod->Lang('add_holiday')}
-    &lt;/a&gt;
-  &lt;/div&gt;
+    </a>
+  </div>
 {/if}
 
 {foreach $holidays as $holiday}
-  &lt;tr&gt;
-    &lt;td&gt;{$holiday->name|escape}&lt;/td&gt;
+  <tr>
+    <td>{$holiday->name|escape}</td>
     {if $mod->CheckPermission('manage_holidays')}
-      &lt;td&gt;&lt;a href="{cms_action_url action=edit_holiday hid=$holiday->id}"&gt;
-            {admin_icon icon='edit.gif'}&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;a href="{cms_action_url action=delete_holiday hid=$holiday->id}"&gt;
-            {admin_icon icon='delete.gif'}&lt;/a&gt;&lt;/td&gt;
+      <td><a href="{cms_action_url action=edit_holiday hid=$holiday->id}">
+            {admin_icon icon='edit.gif'}</a></td>
+      <td><a href="{cms_action_url action=delete_holiday hid=$holiday->id}">
+            {admin_icon icon='delete.gif'}</a></td>
     {/if}
-  &lt;/tr&gt;
+  </tr>
 {/foreach}
 ```
 
@@ -85,7 +85,7 @@ $this->RemovePermission(Holidays::VIEW_PERM);
 
 ```php
 // method.upgrade.php
-if (version_compare($oldversion, '1.2', '&lt;')) {
+if (version_compare($oldversion, '1.2', '<')) {
     $this->CreatePermission(Holidays::VIEW_PERM, 'View Holidays');
 }
 ```

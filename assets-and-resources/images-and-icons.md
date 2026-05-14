@@ -1,10 +1,10 @@
 ## Images and Icons
 
-Modules use images for admin interface icons, frontend content, and Forge listing screenshots. Each has different conventions.
+Modules use images for admin interface icons and frontend content. This page covers runtime image assets — the images your module uses while running. For Forge listing assets (icons, banners, screenshots), see [Module Assets](../cmsms-forge/module-assets.md).
 
 ### Admin Theme Icons
 
-The CMSMS admin theme provides a set of standard icons. Use the `{admin_icon}` Smarty plugin to render them in your admin templates:
+The CMSMS admin theme provides a set of standard icons for common actions. Use the `{admin_icon}` Smarty plugin to render them in your admin templates:
 
 ```smarty
 {admin_icon icon='newobject.gif'}   {* Add / create *}
@@ -21,105 +21,69 @@ The CMSMS admin theme provides a set of standard icons. Use the `{admin_icon}` S
 
 Always use theme icons for standard actions (edit, delete, add, etc.) rather than custom images. This ensures your module looks consistent with the rest of the admin panel and adapts to different admin themes.
 
-### Custom Module Icons
+### Custom Module Images
 
-If your module needs icons beyond what the admin theme provides, place them in an `images/` directory:
+If your module needs images beyond what the admin theme provides (e.g., custom action icons or decorative elements), place them in an `images/` directory:
 
 ```
 modules/YourModule/
 └── images/
-    ├── icon.gif
-    └── custom-action.png
+    ├── custom-action.png
+    └── placeholder.png
 ```
 
 Reference them in templates using the module URL path:
 
-```html
-&lt;img src="{$mod->GetModuleURLPath()}/images/icon.gif" alt="Custom icon" /&gt;
+```smarty
+<img src="{$mod->GetModuleURLPath()}/images/custom-action.png" alt="Custom action" />
 ```
 
 Or from PHP:
 
 ```php
-$icon_url = $this->GetModuleURLPath() . '/images/icon.gif';
-```
-
-### Module Navigation Icon
-
-To display a custom icon next to your module in the admin navigation, you can set it via `GetAdminMenuItems()`:
-
-```php
-public function GetAdminMenuItems()
-{
-    $item = CmsAdminMenuItem::from_module($this);
-    $item->icon = $this->GetModuleURLPath() . '/images/icon.gif';
-    return [$item];
-}
+$icon_url = $this->GetModuleURLPath() . '/images/custom-action.png';
 ```
 
 ### Frontend Images
 
 For images used in frontend templates:
 
-```html
-&lt;img src="{$mod->GetModuleURLPath()}/images/placeholder.png"
-     alt="{$mod->Lang('placeholder_alt')}" /&gt;
+```smarty
+<img src="{$mod->GetModuleURLPath()}/images/placeholder.png"
+     alt="{$mod->Lang('placeholder_alt')}" />
 ```
+
 > **Note:** For distributable modules, avoid bundling frontend images that impose a visual style. If you include sample images, document that they are placeholders the site developer should replace.
 
 ### User-Uploaded Images
 
-If your module allows users to upload images (e.g., holiday photos), store them in the CMSMS uploads directory — not in the module directory:
+If your module allows users to upload images, store them in the CMSMS uploads directory — **not** in the module directory. Files in the module directory are overwritten during upgrades.
 
-```
+```php
 $config = \cms_config::get_instance();
-$upload_dir = $config['uploads_path'] . DIRECTORY_SEPARATOR . 'holidays';
-$upload_url = $config['uploads_url'] . '/holidays';
+$upload_dir = $config['uploads_path'] . DIRECTORY_SEPARATOR . 'modulename';
+$upload_url = $config['uploads_url'] . '/modulename';
 
 // Create the directory if it doesn't exist
 if (!is_dir($upload_dir)) @mkdir($upload_dir, 0755, true);
 
 // Save the uploaded file
-$safe_name = uniqid('holiday_') . '.' . $ext;
+$safe_name = uniqid('item_') . '.' . $ext;
 move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . DIRECTORY_SEPARATOR . $safe_name);
 
-// Display in a template
+// Use in a template
 // $tpl->assign('image_url', $upload_url . '/' . $safe_name);
 ```
-
-Files in the module directory may be overwritten during module upgrades. The uploads directory is persistent and writable.
-
-### Forge Screenshots
-
-When submitting your module to the Forge, include screenshots that show your module in action. Place them in an `assets/` directory:
-
-```
-modules/YourModule/
-└── assets/
-    ├── screenshot_1.jpg
-    ├── screenshot_2.jpg
-    └── screenshot_3.jpg
-```
-
-Screenshots should show:
-
-- The admin panel interface (list view, edit form).
-- The frontend output (summary view, detail view).
-- Any notable features (settings panel, special functionality).
-
-Use descriptive filenames and keep file sizes reasonable (under 200KB each). JPG format is preferred for screenshots.
 
 ### Summary
 
 | Asset type | Location | How to reference |
 | --- | --- | --- |
 | Admin theme icons | Built into the admin theme | `{admin_icon icon='edit.gif'}` |
-| Custom module icons/images | `images/` | `{$mod->GetModuleURLPath()}/images/file.png` |
-| Module CSS | `css/` | `GetHeaderHTML()` or template link tag |
-| Module JavaScript | `js/` | `GetHeaderHTML()` or template script tag |
+| Custom module images | `images/` | `{$mod->GetModuleURLPath()}/images/file.png` |
 | User uploads | CMSMS uploads directory | `$config['uploads_url']` |
-| Forge screenshots | `assets/` | Displayed on the Forge listing page |
+| Forge assets (icon, banner, screenshots) | `assets/` | See [Module Assets](../cmsms-forge/module-assets.md) |
 
 ### Next Steps
 
-This completes the Assets and Resources chapter. For a complete walkthrough of building a module from scratch, see the [Tutorial: Building a Holidays Module](/docs/tutorial).
+For loading CSS and JavaScript, see [Loading CSS and JavaScript](loading-css-and-javascript.md). For Forge listing assets with size requirements, see [Module Assets](../cmsms-forge/module-assets.md).

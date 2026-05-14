@@ -94,8 +94,8 @@ $url = $this->GetModuleURLPath();
 Use this when referencing static assets like CSS, JS, or images from your templates:
 
 ```
-&lt;link rel="stylesheet" href="{$mod->GetModuleURLPath()}/css/admin.css" /&gt;
-&lt;script src="{$mod->GetModuleURLPath()}/js/admin.js"&gt;&lt;/script&gt;
+<link rel="stylesheet" href="{$mod->GetModuleURLPath()}/css/admin.css" />
+<script src="{$mod->GetModuleURLPath()}/js/admin.js"></script>
 ```
 
 #### Template resources
@@ -142,7 +142,7 @@ Never mix filesystem paths and URLs. They serve different purposes:
 if (file_exists($this->GetModulePath() . '/lib/class.MyHelper.php')) { ... }
 
 // Correct — URL for HTML
-&lt;img src="{$mod->GetModuleURLPath()}/images/icon.png" /&gt;
+<img src="{$mod->GetModuleURLPath()}/images/icon.png" />
 
 // WRONG — URL used as filesystem path
 if (file_exists($this->GetModuleURLPath() . '/lib/class.MyHelper.php')) { ... }

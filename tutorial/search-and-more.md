@@ -111,10 +111,10 @@ Create `templates/ajax_detail.tpl`:
 
 ```html
 {if $holiday}
-&lt;div&gt;
-  &lt;strong&gt;{$holiday->name|escape}&lt;/strong&gt; &amp;mdash; {$holiday->the_date|date_format:'%x'}
-  &lt;p&gt;{$holiday->description|strip_tags|summarize}&lt;/p&gt;
-&lt;/div&gt;
+<div>
+  <strong>{$holiday->name|escape}</strong> &mdash; {$holiday->the_date|date_format:'%x'}
+  <p>{$holiday->description|strip_tags|summarize}</p>
+</div>
 {/if}
 ```
 
@@ -123,7 +123,7 @@ Create `templates/ajax_detail.tpl`:
 Modify `action.detail.php`:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 if (!isset($params['hid'])) return;
 
@@ -168,7 +168,7 @@ public function get_pretty_url($id, $action, $returnid = '', $params = array(), 
 Replace `templates/default.tpl` with:
 
 ```smarty
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
 $(document).ready(function(){
     $('a.preview').click(function(e){
         e.preventDefault();
@@ -176,28 +176,28 @@ $(document).ready(function(){
         $('#preview_area').load(url).show(0).delay(5000).hide(0);
     });
 });
-&lt;/script&gt;
+</script>
 
-&lt;div id="preview_area" style="display: none; padding: 10px; background: #f5f5f5; margin-bottom: 15px;"&gt;&lt;/div&gt;
+<div id="preview_area" style="display: none; padding: 10px; background: #f5f5f5; margin-bottom: 15px;"></div>
 
-&lt;div class="holiday-list"&gt;
+<div class="holiday-list">
   {foreach $holidays as $holiday}
-    &lt;div class="holiday-item"&gt;
-      &lt;a href="{cms_action_url action=detail hid=$holiday->id returnid=$detailpage}"&gt;
+    <div class="holiday-item">
+      <a href="{cms_action_url action=detail hid=$holiday->id returnid=$detailpage}">
         {$holiday->name|escape}
-      &lt;/a&gt;
-      &amp;mdash;
-      &lt;a class="preview"
-         href="{cms_action_url action=detail hid=$holiday->id returnid=$detailpage forjs=1 detailtemplate='ajax_detail.tpl'}"&gt;
+      </a>
+      &mdash;
+      <a class="preview"
+         href="{cms_action_url action=detail hid=$holiday->id returnid=$detailpage forjs=1 detailtemplate='ajax_detail.tpl'}">
         {$mod->Lang('preview')}
-      &lt;/a&gt;
-      &amp;mdash;
-      &lt;span class="date"&gt;{$holiday->the_date|date_format:'%x'}&lt;/span&gt;
-    &lt;/div&gt;
+      </a>
+      &mdash;
+      <span class="date">{$holiday->the_date|date_format:'%x'}</span>
+    </div>
   {foreachelse}
-    &lt;p&gt;{$mod->Lang('sorry_noholidays')}&lt;/p&gt;
+    <p>{$mod->Lang('sorry_noholidays')}</p>
   {/foreach}
-&lt;/div&gt;
+</div>
 ```
 
 The "Preview" link loads the `ajax_detail.tpl` template via AJAX. The `showtemplate=false` parameter tells CMSMS to return only the module output without the page template wrapper. The preview appears for 5 seconds then hides.

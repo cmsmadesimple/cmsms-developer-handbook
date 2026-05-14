@@ -58,7 +58,7 @@ modules/
 The PHP file contains:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 
 class MyModule extends CMSModule

@@ -7,13 +7,13 @@ CMSMS page templates use content block tags like `{content}` to define editable 
 In a page template, the `{content}` tag defines the main editable area. Additional content blocks can be created with the `{content_module}` tag:
 
 ```smarty
-&lt;!-- Standard content block --&gt;
+<!-- Standard content block -->
 {content}
 
-&lt;!-- Additional text block --&gt;
+<!-- Additional text block -->
 {content block=sidebar label='Sidebar Content'}
 
-&lt;!-- Module-provided content block --&gt;
+<!-- Module-provided content block -->
 {content_module module=Holidays block=featured_holiday label='Featured Holiday'}
 ```
 
@@ -32,14 +32,14 @@ public function GetContentBlockFieldInput($blockName, $value, $params, $adding, 
 {
     // Return an HTML input for the page editor
     $holidays = $this->getPublishedHolidays();
-    $out = '&lt;select name="' . $blockName . '"&gt;';
-    $out .= '&lt;option value=""&gt;-- Select --&lt;/option&gt;';
+    $out = '<select name="' . $blockName . '">';
+    $out .= '<option value="">-- Select --</option>';
     foreach ($holidays as $h) {
         $sel = ($value == $h->id) ? ' selected' : '';
-        $out .= '&lt;option value="' . $h->id . '"' . $sel . '&gt;'
-              . htmlspecialchars($h->name) . '&lt;/option&gt;';
+        $out .= '<option value="' . $h->id . '"' . $sel . '>'
+              . htmlspecialchars($h->name) . '</option>';
     }
-    $out .= '&lt;/select&gt;';
+    $out .= '</select>';
     return $out;
 }
 ```
@@ -82,10 +82,10 @@ public function RenderContentBlockField($blockName, $value, $blockparams, Conten
     if (empty($value)) return '';
     $holiday = HolidayItem::load_by_id((int) $value);
     if (!$holiday) return '';
-    return '&lt;div class="featured-holiday"&gt;'
+    return '<div class="featured-holiday">'
          . htmlspecialchars($holiday->name)
-         . ' &amp;mdash; ' . date('F j, Y', $holiday->the_date)
-         . '&lt;/div&gt;';
+         . ' &mdash; ' . date('F j, Y', $holiday->the_date)
+         . '</div>';
 }
 ```
 
@@ -94,9 +94,9 @@ public function RenderContentBlockField($blockName, $value, $blockparams, Conten
 Once implemented, template designers use `{content_module}` to place your custom block:
 
 ```smarty
-&lt;div class="hero"&gt;
+<div class="hero">
   {content_module module=Holidays block=featured_holiday label='Featured Holiday'}
-&lt;/div&gt;
+</div>
 ```
 
 In the page editor, the admin will see a dropdown of holidays (from your `GetContentBlockFieldInput`). On the frontend, the selected holiday is rendered by your `RenderContentBlockField`.

@@ -11,7 +11,7 @@ For modules with multiple sections (e.g., items list, settings, help), a tabbed 
 These methods are available on your module instance and output the HTML for a tabbed layout:
 
 ```php
-&lt;?php
+<?php
 // action.defaultadmin.php
 if (!defined('CMS_VERSION')) exit;
 if (!$this->CheckPermission(Holidays::MANAGE_PERM)) return;
@@ -40,11 +40,11 @@ In your template:
 {$mod->StartTabContent()}
 
   {$mod->StartTab('items')}
-    &lt;!-- Items list content here --&gt;
+    <!-- Items list content here -->
   {$mod->EndTab()}
 
   {$mod->StartTab('settings')}
-    &lt;!-- Settings form here --&gt;
+    <!-- Settings form here -->
   {$mod->EndTab()}
 
 {$mod->EndTabContent()}
@@ -141,8 +141,8 @@ To inject CSS or JavaScript into the admin `<head>` when your module is active, 
 public function GetHeaderHTML()
 {
     $url = $this->GetModuleURLPath();
-    return "&lt;link rel=\"stylesheet\" href=\"{$url}/css/admin.css\" /&gt;\n"
-         . "&lt;script src=\"{$url}/js/admin.js\"&gt;&lt;/script&gt;\n";
+    return "<link rel=\"stylesheet\" href=\"{$url}/css/admin.css\" />\n"
+         . "<script src=\"{$url}/js/admin.js\"></script>\n";
 }
 ```
 
@@ -177,13 +177,13 @@ The CMSMS admin theme provides standard CSS classes for consistent layout. Use t
 The CMSMS admin console automatically includes jQuery and jQuery UI. You can use jQuery in your admin templates without including it yourself:
 
 ```
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
 $(document).ready(function(){
     $('a.del_item').click(function(){
         return confirm('{$mod->Lang('confirm_delete')}');
     });
 });
-&lt;/script&gt;
+</script>
 ```
 
 ### Next Steps

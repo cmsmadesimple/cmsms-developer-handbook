@@ -16,7 +16,7 @@ CMSMS 2.2 introduced an asynchronous job system that allows modules to schedule 
 A one-time job runs once and is removed from the queue after execution. Extend `\CMSMS\Async\Job`:
 
 ```php
-&lt;?php
+<?php
 // lib/class.SendNotificationJob.php
 if (!defined('CMS_VERSION')) exit;
 
@@ -80,7 +80,7 @@ $job->save();
 A cron job runs repeatedly at a specified frequency. Extend `\CMSMS\Async\CronJob`:
 
 ```php
-&lt;?php
+<?php
 // lib/class.CleanupJob.php
 if (!defined('CMS_VERSION')) exit;
 
@@ -101,7 +101,7 @@ class CleanupJob extends CronJob
         $cutoff = strtotime('-2 years');
         $db = \cms_utils::get_db();
         $sql = 'DELETE FROM ' . CMS_DB_PREFIX . 'mod_holidays
-                WHERE the_date &lt; ? AND published = 0';
+                WHERE the_date < ? AND published = 0';
         $db->Execute($sql, [$cutoff]);
 
         audit('', 'Holidays', 'Cleanup job executed');
@@ -171,7 +171,7 @@ For cron jobs, additional properties from `CronJobTrait`:
 Here's a pattern from a real module that schedules backup jobs based on admin settings:
 
 ```php
-&lt;?php
+<?php
 // lib/class.BackupJob.php
 use \CMSMS\Async\CronJob;
 

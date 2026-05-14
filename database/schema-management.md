@@ -7,14 +7,14 @@ As your module evolves, you'll need to add columns, create new tables, and migra
 The `method.upgrade.php` file receives the previously installed version in the `$oldversion` variable. Use `version_compare()` to apply changes incrementally:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 
 $db = $this->GetDb();
 $dict = NewDataDictionary($db);
 
 // Version 1.1: add a category column
-if (version_compare($oldversion, '1.1', '&lt;')) {
+if (version_compare($oldversion, '1.1', '<')) {
     $sqlarray = $dict->AddColumnSQL(
         CMS_DB_PREFIX . 'mod_holidays',
         'category C(100)'
@@ -23,7 +23,7 @@ if (version_compare($oldversion, '1.1', '&lt;')) {
 }
 
 // Version 1.2: add an index and a new preference
-if (version_compare($oldversion, '1.2', '&lt;')) {
+if (version_compare($oldversion, '1.2', '<')) {
     $sqlarray = $dict->CreateIndexSQL(
         'idx_holidays_cat',
         CMS_DB_PREFIX . 'mod_holidays',
@@ -34,7 +34,7 @@ if (version_compare($oldversion, '1.2', '&lt;')) {
 }
 
 // Version 2.0: create a new related table
-if (version_compare($oldversion, '2.0', '&lt;')) {
+if (version_compare($oldversion, '2.0', '<')) {
     $flds = "
         id I KEY AUTO,
         holiday_id I NOTNULL,
@@ -46,7 +46,7 @@ if (version_compare($oldversion, '2.0', '&lt;')) {
 }
 
 // Version 2.1: migrate data
-if (version_compare($oldversion, '2.1', '&lt;')) {
+if (version_compare($oldversion, '2.1', '<')) {
     // Move category strings into the new tags table
     $rows = $db->GetAll('SELECT id, category FROM ' . CMS_DB_PREFIX . 'mod_holidays WHERE category != ?', ['']);
     foreach ($rows as $row) {
@@ -73,7 +73,7 @@ For modules that display lists of items with pagination, CMSMS provides the abst
 Extend `CmsDbQueryBase` and implement the two abstract methods — `execute()` and `GetObject()`:
 
 ```php
-&lt;?php
+<?php
 // lib/class.HolidayQuery.php
 
 class HolidayQuery extends CmsDbQueryBase

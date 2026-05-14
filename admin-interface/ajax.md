@@ -7,7 +7,7 @@ Many modern admin interfaces load data asynchronously using AJAX. CMSMS supports
 An AJAX action is a normal action file that outputs data directly instead of rendering a full admin page. The key differences are: suppress the admin output, set the correct content type, and exit after output.
 
 ```php
-&lt;?php
+<?php
 // action.ajax_check.php
 if (!defined('CMS_VERSION')) exit;
 if (!$this->CheckPermission(MyModule::MANAGE_PERM)) {
@@ -64,7 +64,7 @@ This handles output buffers, sets the correct content type, encodes the data, an
 An alternative to manually clearing buffers is the `SuppressAdminOutput()` method, which tells CMSMS not to render the admin header, footer, or theme around your action's output:
 
 ```php
-&lt;?php
+<?php
 // action.ajax_data.php
 if (!defined('CMS_VERSION')) exit;
 if (!$this->CheckPermission(MyModule::MANAGE_PERM)) return;
@@ -86,7 +86,7 @@ Use `{cms_action_url}` to generate the URL for your AJAX endpoint, then call it 
 ```
 {cms_action_url action=ajax_check assign='ajax_url'}
 
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
 $(document).ready(function(){
     $('#check_btn').click(function(){
         var item_id = $('#item_select').val();
@@ -104,7 +104,7 @@ $(document).ready(function(){
         });
     });
 });
-&lt;/script&gt;
+</script>
 ```
 
 #### The showtemplate=false parameter
@@ -116,7 +116,7 @@ $(document).ready(function(){
 Instead of JSON, you can return rendered HTML from a Smarty template:
 
 ```php
-&lt;?php
+<?php
 // action.ajax_detail.php
 if (!defined('CMS_VERSION')) exit;
 if (!$this->CheckPermission(MyModule::MANAGE_PERM)) return;
@@ -140,9 +140,9 @@ The same pattern works for frontend AJAX. The PDF tutorial demonstrates a previe
 {cms_action_url action=detail hid=$holiday->id returnid=$detailpage
                 forjs=1 detailtemplate='ajax_detail.tpl' assign='preview_url'}
 
-&lt;a class="preview" href="{$preview_url}"&gt;{$mod->Lang('preview')}&lt;/a&gt;
+<a class="preview" href="{$preview_url}">{$mod->Lang('preview')}</a>
 
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
 $(document).ready(function(){
     $('a.preview').click(function(e){
         e.preventDefault();
@@ -150,7 +150,7 @@ $(document).ready(function(){
         $('#preview_area').load(url).show(0).delay(5000).hide(0);
     });
 });
-&lt;/script&gt;
+</script>
 ```
 
 The `forjs=1` parameter in `{cms_action_url}` triggers URL processing suitable for JavaScript use.

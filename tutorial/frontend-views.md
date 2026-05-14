@@ -32,7 +32,7 @@ public function InitializeAdmin()
 Create `action.default.php` — the summary view:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 
 $limit = isset($params['pagelimit']) ? (int) $params['pagelimit'] : 1000;
@@ -68,19 +68,19 @@ $tpl->display();
 Create `templates/default.tpl`:
 
 ```smarty
-&lt;div class="holiday-list"&gt;
+<div class="holiday-list">
   {foreach $holidays as $holiday}
-    &lt;div class="holiday-item"&gt;
-      &lt;a href="{cms_action_url action=detail hid=$holiday->id returnid=$detailpage}"&gt;
+    <div class="holiday-item">
+      <a href="{cms_action_url action=detail hid=$holiday->id returnid=$detailpage}">
         {$holiday->name|escape}
-      &lt;/a&gt;
-      &amp;mdash;
-      &lt;span class="date"&gt;{$holiday->the_date|date_format:'%x'}&lt;/span&gt;
-    &lt;/div&gt;
+      </a>
+      &mdash;
+      <span class="date">{$holiday->the_date|date_format:'%x'}</span>
+    </div>
   {foreachelse}
-    &lt;p&gt;{$mod->Lang('sorry_noholidays')}&lt;/p&gt;
+    <p>{$mod->Lang('sorry_noholidays')}</p>
   {/foreach}
-&lt;/div&gt;
+</div>
 ```
 
 ### Step 4: The Detail Action
@@ -88,7 +88,7 @@ Create `templates/default.tpl`:
 Create `action.detail.php`:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 if (!isset($params['hid'])) return;
 
@@ -107,15 +107,15 @@ Create `templates/detail.tpl`:
 
 ```html
 {if $holiday}
-  &lt;article class="holiday-detail"&gt;
-    &lt;h2&gt;{$holiday->name|escape}&lt;/h2&gt;
-    &lt;p class="date"&gt;{$holiday->the_date|date_format:'%x'}&lt;/p&gt;
-    &lt;div class="description"&gt;
+  <article class="holiday-detail">
+    <h2>{$holiday->name|escape}</h2>
+    <p class="date">{$holiday->the_date|date_format:'%x'}</p>
+    <div class="description">
       {$holiday->description}
-    &lt;/div&gt;
-  &lt;/article&gt;
+    </div>
+  </article>
 {else}
-  &lt;p&gt;{$mod->Lang('error_notfound')}&lt;/p&gt;
+  <p>{$mod->Lang('error_notfound')}</p>
 {/if}
 ```
 

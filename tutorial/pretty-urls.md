@@ -80,9 +80,9 @@ For SEO, add a canonical URL to your `templates/detail.tpl`:
 {if $holiday}
   {cms_action_url action=detail hid=$holiday->id assign='canonical'}
   {$canonical=$canonical scope=global}
-  &lt;article class="holiday-detail"&gt;
-    &lt;!-- ... rest of template ... --&gt;
-  &lt;/article&gt;
+  <article class="holiday-detail">
+    <!-- ... rest of template ... -->
+  </article>
 {/if}
 ```
 

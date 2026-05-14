@@ -9,7 +9,7 @@ Validation is different from sanitization (cleaning input) and escaping (securin
 Validate data as early as possible — immediately after receiving it in your action file, before passing it to model classes or the database:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 if (!$this->CheckPermission(Holidays::MANAGE_PERM)) return;
 

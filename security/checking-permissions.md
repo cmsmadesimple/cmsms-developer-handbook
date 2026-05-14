@@ -43,7 +43,7 @@ This is necessary but not sufficient — it only hides the navigation link.
 Every admin action file must independently verify permissions at the top, before any processing:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 if (!$this->CheckPermission(Holidays::MANAGE_PERM)) return;
 

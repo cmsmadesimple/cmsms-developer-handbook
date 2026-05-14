@@ -1,0 +1,17 @@
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor files
+*.swp
+*.swo
+*~
+.amazonq/
+.claude/
+.vscode/
+.kiro/
+.idea/
+
+# Node (if any tooling is added)
+node_modules/

@@ -76,7 +76,7 @@ $lang['event_help_HolidayAdded'] = 'Parameters: holiday_id (int) - The ID of the
 If you add new events in a later version, create them in `method.upgrade.php`:
 
 ```php
-if (version_compare($oldversion, '1.2', '&lt;')) {
+if (version_compare($oldversion, '1.2', '<')) {
     $this->CreateEvent('HolidayPublished');
 }
 ```

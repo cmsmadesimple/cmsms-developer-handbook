@@ -117,8 +117,8 @@ class Holidays extends CMSModule
                     WHERE the_date = ? AND published = 1';
             $name = $db->GetOne($sql, [strtotime($today)]);
             if ($name) {
-                $params['content'] = '&lt;div class="holiday-banner"&gt;'
-                    . htmlspecialchars($name) . '&lt;/div&gt;'
+                $params['content'] = '<div class="holiday-banner">'
+                    . htmlspecialchars($name) . '</div>'
                     . $params['content'];
             }
         }

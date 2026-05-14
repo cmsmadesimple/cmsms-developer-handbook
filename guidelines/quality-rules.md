@@ -14,11 +14,11 @@ Inline JS in PHP output prevents browser caching, blocks CSP enforcement, and ta
 
 ```
 // Bad
-echo '&lt;script&gt;document.getElementById("btn").addEventListener("click", function() { submit(); });&lt;/script&gt;';
+echo '<script>document.getElementById("btn").addEventListener("click", function() { submit(); });</script>';
 ```
 ```php
 // Good
-$this-&gt;AddHeaderJavascript($this-&gt;GetModuleURLPath() . '/assets/admin.js');
+$this->AddHeaderJavascript($this->GetModuleURLPath() . '/assets/admin.js');
 ```
 
 ### CMSMS\_QUAL\_002: Large inline <style> block in template
@@ -31,16 +31,16 @@ Large inline CSS blocks prevent browser caching, increase page weight on every r
 
 ```
 // Bad
-&lt;style&gt;
+<style>
 .mymod-table { width: 100%; border-collapse: collapse; }
 .mymod-table th { background: #f5f5f5; padding: 8px; }
 .mymod-table td { padding: 8px; border-bottom: 1px solid #ddd; }
-&lt;/style&gt;
+</style>
 ```
 ```
 // Good
 {* In assets/admin.css *}
-&lt;link rel="stylesheet" href="{$module_url}/assets/admin.css"&gt;
+<link rel="stylesheet" href="{$module_url}/assets/admin.css">
 ```
 
 ### CMSMS\_QUAL\_003: Database query inside a loop body
@@ -54,13 +54,13 @@ Each loop iteration fires a separate DB round-trip. For 100 items, that's 100 qu
 ```sql
 // Bad
 foreach ($category_ids as $cid) {
-    $items = $db-&gt;GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'module_mymod_items WHERE cat_id = ?', [$cid]);
+    $items = $db->GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'module_mymod_items WHERE cat_id = ?', [$cid]);
 }
 ```
 ```sql
 // Good
 $ph = implode(',', array_fill(0, count($category_ids), '?'));
-$items = $db-&gt;GetAll('SELECT * FROM ' . CMS_DB_PREFIX . "module_mymod_items WHERE cat_id IN ($ph)", $category_ids);
+$items = $db->GetAll('SELECT * FROM ' . CMS_DB_PREFIX . "module_mymod_items WHERE cat_id IN ($ph)", $category_ids);
 ```
 
 ### CMSMS\_QUAL\_004: Database access in Smarty template
@@ -74,14 +74,14 @@ Templates are the view layer. Database access in templates makes debugging impos
 ```sql
 // Bad
 {php}
-$db = cmsms()-&gt;GetDb();
-$rows = $db-&gt;GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'items');
+$db = cmsms()->GetDb();
+$rows = $db->GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'items');
 {/php}
 ```
 ```smarty
 // Good
 {foreach $items as $item}
-  &lt;li&gt;{$item.name|escape}&lt;/li&gt;
+  <li>{$item.name|escape}</li>
 {/foreach}
 ```
 
@@ -115,16 +115,16 @@ Mixing data access and HTML rendering in one file makes both untestable, prevent
 
 ```sql
 // Bad
-$rows = $db-&gt;GetAll('SELECT * FROM items');
-echo '&lt;table&gt;';
-foreach ($rows as $r) { echo '&lt;tr&gt;&lt;td&gt;' . $r['name'] . '&lt;/td&gt;&lt;/tr&gt;'; }
-echo '&lt;/table&gt;';
+$rows = $db->GetAll('SELECT * FROM items');
+echo '<table>';
+foreach ($rows as $r) { echo '<tr><td>' . $r['name'] . '</td></tr>'; }
+echo '</table>';
 ```
 ```sql
 // Good
-$rows = $db-&gt;GetAll('SELECT * FROM items');
-$tpl-&gt;assign('items', $rows);
-echo $tpl-&gt;fetch();
+$rows = $db->GetAll('SELECT * FROM items');
+$tpl->assign('items', $rows);
+echo $tpl->fetch();
 ```
 
 ### CMSMS\_QUAL\_007: Deeply nested control structures (4+ levels)
@@ -138,10 +138,10 @@ Deep nesting makes code hard to follow, test, and modify. Each level multiplies 
 ```
 // Bad
 foreach ($mods as $m) {
-    if ($m-&gt;isActive()) {
-        foreach ($m-&gt;getItems() as $i) {
-            if ($i-&gt;isValid()) {
-                if ($i-&gt;hasAccess($u)) {
+    if ($m->isActive()) {
+        foreach ($m->getItems() as $i) {
+            if ($i->isValid()) {
+                if ($i->hasAccess($u)) {
                     process($i);
                 }
             }
@@ -152,8 +152,8 @@ foreach ($mods as $m) {
 ```php
 // Good
 foreach ($mods as $m) {
-    if (!$m-&gt;isActive()) continue;
-    $this-&gt;processItems($m, $u);
+    if (!$m->isActive()) continue;
+    $this->processItems($m, $u);
 }
 ```
 
@@ -173,7 +173,7 @@ Large files are hard to navigate, review, and test. In CMSMS modules, action fil
 // Good
 // action.defaultadmin.php — 30 lines delegating to:
 $controller = new MyModule\AdminController($this, $smarty);
-$controller-&gt;dispatch($params);
+$controller->dispatch($params);
 ```
 
 ### CMSMS\_QUAL\_009: SELECT \* in production query
@@ -186,11 +186,11 @@ SELECT \* fetches all columns including BLOBs and unused fields, wastes memory, 
 
 ```sql
 // Bad
-$rows = $db-&gt;GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'module_mymod_items');
+$rows = $db->GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'module_mymod_items');
 ```
 ```sql
 // Good
-$rows = $db-&gt;GetAll('SELECT id, name, status FROM ' . CMS_DB_PREFIX . 'module_mymod_items');
+$rows = $db->GetAll('SELECT id, name, status FROM ' . CMS_DB_PREFIX . 'module_mymod_items');
 ```
 
 ### CMSMS\_QUAL\_010: Catch block that silently swallows exception
@@ -204,7 +204,7 @@ Empty catch blocks hide failures. The code continues in an unexpected state, mak
 ```
 // Bad
 try {
-    $result = $db-&gt;Execute($query, $params);
+    $result = $db->Execute($query, $params);
 } catch (Exception $e) {
     // ignore
 }
@@ -212,10 +212,10 @@ try {
 ```php
 // Good
 try {
-    $result = $db-&gt;Execute($query, $params);
+    $result = $db->Execute($query, $params);
 } catch (Exception $e) {
-    audit($this-&gt;GetName() . ': DB error: ' . $e-&gt;getMessage());
-    $this-&gt;SetError($this-&gt;Lang('error_db_operation'));
+    audit($this->GetName() . ': DB error: ' . $e->getMessage());
+    $this->SetError($this->Lang('error_db_operation'));
 }
 ```
 
@@ -238,7 +238,7 @@ mysql_query('SELECT * FROM items');
 $parts = explode(',', $str);
 if (preg_match('/^[a-z]+$/', $input)) { ... }
 $db = cms_utils::get_db();
-$db-&gt;GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'items');
+$db->GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'items');
 ```
 
 ### CMSMS\_QUAL\_012: Localhost or loopback URL hardcoded
@@ -255,7 +255,7 @@ $api = 'http://localhost:8080/api/check';
 ```
 ```php
 // Good
-$api = $this-&gt;GetPreference('mymodule_api_url', '');
+$api = $this->GetPreference('mymodule_api_url', '');
 ```
 
 ### CMSMS\_QUAL\_013: Form submit handler without POST-Redirect-Get pattern
@@ -269,16 +269,16 @@ When a user submits a form and the action processes it without redirecting, refr
 ```sql
 // Bad
 if (isset($params['submit'])) {
-    $db-&gt;Execute('INSERT INTO ...', [...]);
+    $db->Execute('INSERT INTO ...', [...]);
     // no redirect - refresh will re-insert
 }
 ```
 ```php
 // Good
 if (isset($params['submit'])) {
-    $db-&gt;Execute('INSERT INTO ...', [...]);
-    $this-&gt;SetMessage($this-&gt;Lang('item_saved'));
-    $this-&gt;RedirectToAdminTab();
+    $db->Execute('INSERT INTO ...', [...]);
+    $this->SetMessage($this->Lang('item_saved'));
+    $this->RedirectToAdminTab();
 }
 ```
 

@@ -84,7 +84,7 @@ public static function smarty_count_plugin($params, $template)
 Content editors can then use:
 
 ```html
-&lt;p&gt;We have {holidays_count} holidays in our database.&lt;/p&gt;
+<p>We have {holidays_count} holidays in our database.</p>
 ```
 
 #### Plugin types

@@ -40,7 +40,7 @@ The CMSMS API also provides utility functions for common tasks like database acc
 Every PHP file in your module should begin with a check that prevents direct browser access:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 ```
 
@@ -51,7 +51,7 @@ This ensures the file can only be executed within the CMSMS application context.
 Every admin action file should verify that the current user has the required permission before doing anything:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 if (!$this->CheckPermission(MyModule::MANAGE_PERM)) return;
 ```
@@ -152,7 +152,7 @@ if (isset($params['cancel'])) {
 Every form input field in a module template must be prefixed with `{$actionid}`. This is how CMSMS routes form data back to the correct action, especially on the frontend where the same module can be called multiple times on one page:
 
 ```html
-&lt;input type="text" name="{$actionid}name" value="{$item->name}" /&gt;
+<input type="text" name="{$actionid}name" value="{$item->name}" />
 ```
 
 The `{form_start}` Smarty plugin handles the form tag and hidden fields automatically. Parameters like `hid=$item->id` passed to `{form_start}` are automatically prefixed.

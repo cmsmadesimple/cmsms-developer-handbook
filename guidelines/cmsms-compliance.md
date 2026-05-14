@@ -14,11 +14,11 @@ CMSMS reserves unprefixed table names for core. Module tables must use module\_<
 
 ```sql
 // Bad
-$db-&gt;GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'custom_items');
+$db->GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'custom_items');
 ```
 ```sql
 // Good
-$db-&gt;GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'module_mymod_items');
+$db->GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'module_mymod_items');
 ```
 
 ### CMSMS\_CMS\_002: Hardcoded absolute path instead of CMS path constants
@@ -35,7 +35,7 @@ $path = '/var/www/html/modules/MyModule/data/cache.json';
 ```
 ```php
 // Good
-$path = cms_join_path($this-&gt;GetModulePath(), 'data', 'cache.json');
+$path = cms_join_path($this->GetModulePath(), 'data', 'cache.json');
 ```
 
 ### CMSMS\_CMS\_003: Hardcoded user-facing string in SetError/SetMessage
@@ -48,11 +48,11 @@ Hardcoded English strings in UI methods prevent localization and make string man
 
 ```php
 // Bad
-$this-&gt;SetError('The item could not be saved to the database.');
+$this->SetError('The item could not be saved to the database.');
 ```
 ```php
 // Good
-$this-&gt;SetError($this-&gt;Lang('error_item_save_failed'));
+$this->SetError($this->Lang('error_item_save_failed'));
 ```
 
 ### CMSMS\_CMS\_004: Deprecated global $gCms for database access
@@ -66,13 +66,13 @@ The global $gCms pattern is deprecated since CMSMS 2.0. It pollutes scope and br
 ```
 // Bad
 global $gCms;
-$db = $gCms-&gt;GetDb();
-$config = $gCms-&gt;GetConfig();
+$db = $gCms->GetDb();
+$config = $gCms->GetConfig();
 ```
 ```
 // Good
-$db = cmsms()-&gt;GetDb();
-$config = cmsms()-&gt;GetConfig();
+$db = cmsms()->GetDb();
+$config = cmsms()->GetConfig();
 ```
 
 ### CMSMS\_CMS\_005: echo ProcessTemplate() — deprecated output pattern
@@ -85,12 +85,12 @@ echo $this->ProcessTemplate() is the CMSMS 1.x pattern. Modern CMSMS uses Proces
 
 ```php
 // Bad
-echo $this-&gt;ProcessTemplate('mytemplate.tpl');
+echo $this->ProcessTemplate('mytemplate.tpl');
 ```
 ```php
 // Good
-$tpl = $smarty-&gt;CreateTemplate($this-&gt;GetTemplateResource('mytemplate.tpl'));
-echo $tpl-&gt;fetch();
+$tpl = $smarty->CreateTemplate($this->GetTemplateResource('mytemplate.tpl'));
+echo $tpl->fetch();
 ```
 
 ### CMSMS\_CMS\_006: Admin action file missing CheckPermission() call
@@ -103,18 +103,16 @@ Every admin action must gate on CheckPermission() before performing any operatio
 
 ```sql
 // Bad
-// action.admin_settings.php
-$db = cmsms()-&gt;GetDb();
-$rows = $db-&gt;GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'module_mymod_config');
+$db->GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'module_mymod_config');
 ```
 ```php
 // Good
 // action.admin_settings.php
-if (!$this-&gt;CheckPermission('Manage MyModule')) {
-    echo $this-&gt;ShowErrors($this-&gt;Lang('error_permission'));
+if (!$this->CheckPermission('Manage MyModule')) {
+    echo $this->ShowErrors($this->Lang('error_permission'));
     return;
 }
-$db = cmsms()-&gt;GetDb();
+$db = cmsms()->GetDb();
 ```
 
 ### CMSMS\_CMS\_007: Direct HTML output in action file instead of Smarty template
@@ -127,12 +125,12 @@ CMSMS modules must use Smarty templates for HTML output. Direct echo of HTML in 
 
 ```html
 // Bad
-echo '&lt;div class="pagecontainer"&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;' . $name . '&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;';
+echo '<div class="pagecontainer"><table><tr><td>' . $name . '</td></tr></table></div>';
 ```
 ```
 // Good
-$tpl-&gt;assign('name', $name);
-echo $tpl-&gt;fetch();
+$tpl->assign('name', $name);
+echo $tpl->fetch();
 ```
 
 ### CMSMS\_CMS\_008: SQL query with hardcoded table name missing CMS\_DB\_PREFIX
@@ -145,11 +143,11 @@ CMSMS allows custom table prefixes. Hardcoding 'module\_' or 'cms\_' directly in
 
 ```sql
 // Bad
-$db-&gt;GetAll("SELECT * FROM module_news_items WHERE active = 1");
+$db->GetAll("SELECT * FROM module_news_items WHERE active = 1");
 ```
 ```sql
 // Good
-$db-&gt;GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'module_news_items WHERE active = 1');
+$db->GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'module_news_items WHERE active = 1');
 ```
 
 ### CMSMS\_CMS\_009: Raw HTML <form> in frontend template instead of {form\_start}
@@ -162,9 +160,9 @@ Raw <form> tags bypass CMSMS's action routing and CSRF protection. {form\_start}
 
 ```html
 // Bad
-&lt;form action="moduleinterface.php" method="post"&gt;
-  &lt;input type="hidden" name="mact" value="MyModule,cntnt01,submit,0"&gt;
-&lt;/form&gt;
+<form action="moduleinterface.php" method="post">
+  <input type="hidden" name="mact" value="MyModule,cntnt01,submit,0">
+</form>
 ```
 ```smarty
 // Good
@@ -184,12 +182,12 @@ Loading another module at runtime without declaring the dependency in GetDepende
 ```
 // Bad
 $news = cms_utils::get_module('News');
-$news-&gt;DoSomething();
+$news->DoSomething();
 ```
 ```php
 // Good
 // In module class:
-public function GetDependencies() { return ['News' =&gt; '2.50']; }
+public function GetDependencies() { return ['News' => '2.50']; }
 // Then:
 $news = cms_utils::get_module('News');
 ```
@@ -205,14 +203,14 @@ $news = cms_utils::get_module('News');
 ```sql
 // Bad
 {php}
-  $db = cmsms()-&gt;GetDb();
-  echo $db-&gt;GetOne('SELECT COUNT(*) FROM items');
+  $db = cmsms()->GetDb();
+  echo $db->GetOne('SELECT COUNT(*) FROM items');
 {/php}
 ```
 ```html
 // Good
-{* Assigned in action: $tpl-&gt;assign('count', $count); *}
-&lt;p&gt;Total: {$count}&lt;/p&gt;
+{* Assigned in action: $tpl->assign('count', $count); *}
+<p>Total: {$count}</p>
 ```
 
 ### CMSMS\_CMS\_013: Generic class filename in lib/ without module prefix
@@ -246,13 +244,13 @@ CMSMS stores all module preferences in a shared table. Short generic keys like '
 
 ```php
 // Bad
-$this-&gt;SetPreference('enabled', '1');
-$this-&gt;GetPreference('mode', 'default');
+$this->SetPreference('enabled', '1');
+$this->GetPreference('mode', 'default');
 ```
 ```php
 // Good
-$this-&gt;SetPreference('logwatch_enabled', '1');
-$this-&gt;GetPreference('logwatch_mode', 'default');
+$this->SetPreference('logwatch_enabled', '1');
+$this->GetPreference('logwatch_mode', 'default');
 ```
 
 ### CMSMS\_CMS\_015: Permission name without module identifier
@@ -284,13 +282,13 @@ CMSMS events are global. The convention is ModuleName::EventName (e.g. 'News::Ne
 
 ```php
 // Bad
-$this-&gt;CreateEvent('ItemSaved');
-$this-&gt;SendEvent('ItemDeleted', $params);
+$this->CreateEvent('ItemSaved');
+$this->SendEvent('ItemDeleted', $params);
 ```
 ```php
 // Good
-$this-&gt;CreateEvent('MyModule::ItemSaved');
-$this-&gt;SendEvent('MyModule::ItemDeleted', $params);
+$this->CreateEvent('MyModule::ItemSaved');
+$this->SendEvent('MyModule::ItemDeleted', $params);
 ```
 
 ### CMSMS\_CMS\_017: Smarty variable assigned without module prefix
@@ -303,13 +301,13 @@ Smarty variables are global scope. Generic names like 'items', 'data', 'title' w
 
 ```
 // Bad
-$smarty-&gt;assign('items', $items);
-$smarty-&gt;assign('title', $title);
+$smarty->assign('items', $items);
+$smarty->assign('title', $title);
 ```
 ```
 // Good
-$smarty-&gt;assign('news_items', $items);
-$tpl-&gt;assign('items', $items);  // CreateTemplate scope is isolated
+$smarty->assign('news_items', $items);
+$tpl->assign('items', $items);  // CreateTemplate scope is isolated
 ```
 
 ### CMSMS\_CMS\_018: Error reporting or display\_errors set in production code
@@ -391,15 +389,15 @@ class MyModule extends CMSModule {
 class MyModule extends CMSModule {
     function GetName() { return 'MyModule'; }
     function GetVersion() { return '1.0'; }
-    function GetFriendlyName() { return $this-&gt;Lang('friendlyname'); }
+    function GetFriendlyName() { return $this->Lang('friendlyname'); }
     function GetAuthor() { return 'Your Name'; }
     function GetAuthorEmail() { return 'you@example.com'; }
-    function GetAdminDescription() { return $this-&gt;Lang('description'); }
+    function GetAdminDescription() { return $this->Lang('description'); }
     function HasAdmin() { return true; }
     function IsPluginModule() { return false; }
     function MinimumCMSVersion() { return '2.2.0'; }
     function GetHelp() { /* ... */ }
-    function VisibleToAdminUser() { return $this-&gt;CheckPermission('Manage MyModule'); }
+    function VisibleToAdminUser() { return $this->CheckPermission('Manage MyModule'); }
     function GetDependencies() { return []; }
 }
 ```
@@ -415,14 +413,14 @@ Debug output functions dump internal state (variables, stack traces, object stru
 ```
 // Bad
 var_dump($params);
-print_r($db-&gt;ErrorMsg());
+print_r($db->ErrorMsg());
 debug_print_backtrace();
 ```
 ```
 // Good
 error_log('MyModule debug: ' . print_r($params, true));
 // Or wrap in debug check:
-if (defined('CMS_DEBUG') &amp;&amp; CMS_DEBUG) {
+if (defined('CMS_DEBUG') && CMS_DEBUG) {
     error_log(print_r($params, true));
 }
 ```
@@ -467,15 +465,15 @@ Every module PHP file (action files, method files, lib classes) must prevent dir
 
 ```php
 // Bad
-&lt;?php
+<?php
 // action.defaultadmin.php
-$db = cmsms()-&gt;GetDb();
+$db = cmsms()->GetDb();
 ```
 ```php
 // Good
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
-$db = cmsms()-&gt;GetDb();
+$db = cmsms()->GetDb();
 ```
 
 ### CMSMS\_CMS\_024: Class or function defined without namespace or module prefix
@@ -514,18 +512,18 @@ Every PHP file in a CMSMS module should include a license header comment near th
 
 ```php
 // Bad
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
-$db = cmsms()-&gt;GetDb();
+$db = cmsms()->GetDb();
 ```
 ```php
 // Good
-&lt;?php
+<?php
 #--------------------------------------------------
 # See LICENSE for full license information.
 #--------------------------------------------------
 if (!defined('CMS_VERSION')) exit;
-$db = cmsms()-&gt;GetDb();
+$db = cmsms()->GetDb();
 ```
 
 ### CMSMS\_CMS\_026: Uninstall does not clean up resources created by install
@@ -538,17 +536,16 @@ A module that creates database tables, permissions, preferences, or events durin
 
 ```php
 // Bad
-// method.install.php
-$this-&gt;CreatePermission('Manage MyModule');
+$this->CreatePermission('Manage MyModule');
 // method.uninstall.php
 // (empty - permissions left behind)
 ```
 ```php
 // Good
 // method.install.php
-$this-&gt;CreatePermission('Manage MyModule');
+$this->CreatePermission('Manage MyModule');
 // method.uninstall.php
-$this-&gt;RemovePermission('Manage MyModule');
+$this->RemovePermission('Manage MyModule');
 ```
 
 ### CMSMS\_CMS\_027: Database table creation does not follow CMSMS conventions
@@ -561,16 +558,16 @@ CMSMS provides a database abstraction layer (ADODB Data Dictionary) for creating
 
 ```sql
 // Bad
-$db-&gt;Execute('CREATE TABLE module_mymod_items (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255))');
+$db->Execute('CREATE TABLE module_mymod_items (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255))');
 ```
 ```php
 // Good
-$db = $this-&gt;GetDb();
+$db = $this->GetDb();
 $dict = NewDataDictionary($db);
-$taboptarray = ['mysql' =&gt; 'ENGINE=InnoDB'];
+$taboptarray = ['mysql' => 'ENGINE=InnoDB'];
 $flds = 'id I KEY AUTO, name C(255) NOTNULL';
-$sqlarray = $dict-&gt;CreateTableSQL(cms_db_prefix().'module_mymod_items', $flds, $taboptarray);
-$dict-&gt;ExecuteSQLArray($sqlarray);
+$sqlarray = $dict->CreateTableSQL(cms_db_prefix().'module_mymod_items', $flds, $taboptarray);
+$dict->ExecuteSQLArray($sqlarray);
 ```
 
 ### CMSMS\_CMS\_028: Direct $\_GET access instead of $params in action file
@@ -604,14 +601,14 @@ const USE\_PERM = 'Use MyModule';
 
 ```php
 // Bad
-$this-&gt;CheckPermission('Manage MyModule');
-$this-&gt;CreatePermission('Manage MyModule');
+$this->CheckPermission('Manage MyModule');
+$this->CreatePermission('Manage MyModule');
 ```
 ```php
 // Good
 const MANAGE_PERM = 'Manage MyModule';
-$this-&gt;CheckPermission(self::MANAGE_PERM);
-$this-&gt;CreatePermission(self::MANAGE_PERM);
+$this->CheckPermission(self::MANAGE_PERM);
+$this->CreatePermission(self::MANAGE_PERM);
 ```
 
 ### CMSMS\_CMS\_031: Deprecated $this->smarty module property
@@ -624,12 +621,12 @@ The $this->smarty magic property on module objects was deprecated in CMSMS 2.1. 
 
 ```php
 // Bad
-$this-&gt;smarty-&gt;assign('data', $data);
+$this->smarty->assign('data', $data);
 ```
 ```
 // Good
-$smarty = cmsms()-&gt;GetSmarty();
-$smarty-&gt;assign('data', $data);
+$smarty = cmsms()->GetSmarty();
+$smarty->assign('data', $data);
 ```
 
 ### CMSMS\_CMS\_032: Deprecated module parameter registration methods
@@ -642,8 +639,8 @@ SetParameterType(), CreateParameter(), RestrictUnknownParameters(), and GetModul
 
 ```php
 // Bad
-$this-&gt;SetParameterType('id', CLEAN_INT);
-$this-&gt;CreateParameter('sortby', 'name', 'Sort field');
+$this->SetParameterType('id', CLEAN_INT);
+$this->CreateParameter('sortby', 'name', 'Sort field');
 ```
 ```
 // Good

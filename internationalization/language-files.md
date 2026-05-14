@@ -19,7 +19,7 @@ The `en_US.php` file goes directly in `lang/`. Translations from the Translation
 ### File Format
 
 ```php
-&lt;?php
+<?php
 // lang/en_US.php
 
 $lang['friendlyname'] = 'Holidays';

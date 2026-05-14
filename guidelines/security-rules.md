@@ -14,11 +14,11 @@ User-controlled values concatenated into SQL strings allow injection. The ADODB 
 
 ```sql
 // Bad
-$db-&gt;GetRow('SELECT * FROM ' . CMS_DB_PREFIX . 'items WHERE id = ' . $params['id']);
+$db->GetRow('SELECT * FROM ' . CMS_DB_PREFIX . 'items WHERE id = ' . $params['id']);
 ```
 ```sql
 // Good
-$db-&gt;GetRow('SELECT * FROM ' . CMS_DB_PREFIX . 'items WHERE id = ?', [(int)$params['id']]);
+$db->GetRow('SELECT * FROM ' . CMS_DB_PREFIX . 'items WHERE id = ?', [(int)$params['id']]);
 ```
 
 ### CMSMS\_SEC\_002: User input flows into echo/print output
@@ -54,7 +54,7 @@ $content = file_get_contents($upload_dir . '/' . $params['filename']);
 // Good
 $safe = basename($params['filename'] ?? '');
 $path = realpath($upload_dir . '/' . $safe);
-if ($path &amp;&amp; str_starts_with($path, realpath($upload_dir))) {
+if ($path && str_starts_with($path, realpath($upload_dir))) {
     $content = file_get_contents($path);
 }
 ```
@@ -105,11 +105,11 @@ Variables concatenated into WHERE/SET/VALUES clauses are the primary SQL injecti
 
 ```
 // Bad
-$db-&gt;Execute('UPDATE ' . CMS_DB_PREFIX . 'items SET name = \'' . $name . '\' WHERE id = ' . $id);
+$db->Execute('UPDATE ' . CMS_DB_PREFIX . 'items SET name = \'' . $name . '\' WHERE id = ' . $id);
 ```
 ```
 // Good
-$db-&gt;Execute('UPDATE ' . CMS_DB_PREFIX . 'items SET name = ? WHERE id = ?', [$name, $id]);
+$db->Execute('UPDATE ' . CMS_DB_PREFIX . 'items SET name = ? WHERE id = ?', [$name, $id]);
 ```
 
 ### CMSMS\_SEC\_007: SQL query with PHP variable interpolation in double-quoted string
@@ -122,11 +122,11 @@ PHP interpolates variables inside double-quoted strings before the query reaches
 
 ```
 // Bad
-$db-&gt;Execute("UPDATE {$prefix}items SET status = $status WHERE id = $id");
+$db->Execute("UPDATE {$prefix}items SET status = $status WHERE id = $id");
 ```
 ```
 // Good
-$db-&gt;Execute('UPDATE ' . CMS_DB_PREFIX . 'items SET status = ? WHERE id = ?', [$status, $id]);
+$db->Execute('UPDATE ' . CMS_DB_PREFIX . 'items SET status = ? WHERE id = ?', [$status, $id]);
 ```
 
 ### CMSMS\_SEC\_008: LIKE clause with concatenated search term
@@ -139,11 +139,11 @@ LIKE clauses with concatenated variables are injectable. The % wildcards should 
 
 ```sql
 // Bad
-$db-&gt;GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'items WHERE name LIKE \'%' . $search . '%\'');
+$db->GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'items WHERE name LIKE \'%' . $search . '%\'');
 ```
 ```sql
 // Good
-$db-&gt;GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'items WHERE name LIKE ?', ['%' . $search . '%']);
+$db->GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'items WHERE name LIKE ?', ['%' . $search . '%']);
 ```
 
 ### CMSMS\_SEC\_009: Dynamic ORDER BY or table name from user input
@@ -156,13 +156,13 @@ ORDER BY columns and table names cannot be parameterized with ?. User input in t
 
 ```sql
 // Bad
-$db-&gt;GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'items ORDER BY ' . $params['sort']);
+$db->GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'items ORDER BY ' . $params['sort']);
 ```
 ```sql
 // Good
 $allowed_cols = ['name', 'created', 'id'];
 $sort = in_array($params['sort'] ?? '', $allowed_cols, true) ? $params['sort'] : 'id';
-$db-&gt;GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'items ORDER BY ' . $sort);
+$db->GetAll('SELECT * FROM ' . CMS_DB_PREFIX . 'items ORDER BY ' . $sort);
 ```
 
 ### CMSMS\_SEC\_010: eval() with variable argument
@@ -179,8 +179,8 @@ eval('$result = ' . $params['formula'] . ';');
 ```
 ```
 // Good
-$formulas = ['sum' =&gt; fn($a, $b) =&gt; $a + $b];
-$result = ($formulas[$params['formula']] ?? fn() =&gt; 0)($a, $b);
+$formulas = ['sum' => fn($a, $b) => $a + $b];
+$result = ($formulas[$params['formula']] ?? fn() => 0)($a, $b);
 ```
 
 ### CMSMS\_SEC\_011: unserialize() on external or variable data
@@ -231,7 +231,7 @@ Frontend state-changing operations triggered by form submission without CSRF tok
 ```
 // Bad
 if (isset($params['submit'])) {
-    $db-&gt;Execute('DELETE FROM items WHERE id = ?', [$params['id']]);
+    $db->Execute('DELETE FROM items WHERE id = ?', [$params['id']]);
 }
 ```
 ```php
@@ -243,9 +243,9 @@ if (isset($params['submit'])) {
 
 // In action handler:
 if(!\xt_utils::valid_form_csrf()) {
-    throw new Exception($this-&gt;Lang('error_security'));
+    throw new Exception($this->Lang('error_security'));
 }
-$db-&gt;Execute('DELETE FROM items WHERE id = ?', [(int)$params['id']]);
+$db->Execute('DELETE FROM items WHERE id = ?', [(int)$params['id']]);
 ```
 
 ### CMSMS\_SEC\_014: Hardcoded credential assigned to variable
@@ -299,7 +299,7 @@ preg_replace('/\{(\w+)\}/e', '$data["$1"]', $params['template']);
 ```
 ```
 // Good
-preg_replace_callback('/\{(\w+)\}/', fn($m) =&gt; htmlspecialchars($data[$m[1]] ?? ''), $params['template']);
+preg_replace_callback('/\{(\w+)\}/', fn($m) => htmlspecialchars($data[$m[1]] ?? ''), $params['template']);
 ```
 
 ### CMSMS\_SEC\_017: Header injection via user input in header()
@@ -316,7 +316,7 @@ header('Location: ' . $_GET['return_url']);
 ```
 ```php
 // Good
-$this-&gt;RedirectToAdminTab($id);
+$this->RedirectToAdminTab($id);
 ```
 
 ### CMSMS\_SEC\_018: Code obfuscation tool detected
@@ -329,10 +329,10 @@ Obfuscated/encoded PHP code hides its true functionality, making security review
 
 ```php
 // Bad
-&lt;?php @Zend; // encoded file
+<?php @Zend; // encoded file
 ```
 ```php
 // Good
-&lt;?php
+<?php
 // Readable, reviewable source code
 ```

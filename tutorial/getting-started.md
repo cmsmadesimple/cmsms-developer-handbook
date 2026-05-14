@@ -17,7 +17,7 @@ modules/
 Create a file called `Holidays.module.php` inside the `Holidays/` directory:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 
 class Holidays extends CMSModule
@@ -53,7 +53,7 @@ class Holidays extends CMSModule
 Create the directory `lang/` inside `Holidays/`, then create `en_US.php`:
 
 ```php
-&lt;?php
+<?php
 $lang['friendlyname'] = 'Holidays';
 $lang['admindescription'] = 'A module for managing and displaying holidays';
 $lang['ask_uninstall'] = 'Are you sure you want to uninstall the Holidays module? All holiday data will be permanently deleted.';

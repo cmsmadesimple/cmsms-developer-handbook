@@ -12,33 +12,33 @@ Most content modules follow a two-view pattern:
 #### Summary template example
 
 ```smarty
-&lt;div class="holiday-list"&gt;
+<div class="holiday-list">
   {foreach $holidays as $holiday}
-    &lt;div class="holiday-item"&gt;
-      &lt;a href="{cms_action_url action=detail hid=$holiday->id returnid=$detailpage}"&gt;
+    <div class="holiday-item">
+      <a href="{cms_action_url action=detail hid=$holiday->id returnid=$detailpage}">
         {$holiday->name|escape}
-      &lt;/a&gt;
-      &lt;span class="date"&gt;{$holiday->the_date|date_format:'%x'}&lt;/span&gt;
-    &lt;/div&gt;
+      </a>
+      <span class="date">{$holiday->the_date|date_format:'%x'}</span>
+    </div>
   {foreachelse}
-    &lt;p&gt;{$mod->Lang('no_holidays')}&lt;/p&gt;
+    <p>{$mod->Lang('no_holidays')}</p>
   {/foreach}
-&lt;/div&gt;
+</div>
 ```
 
 #### Detail template example
 
 ```html
 {if $holiday}
-  &lt;article class="holiday-detail"&gt;
-    &lt;h2&gt;{$holiday->name|escape}&lt;/h2&gt;
-    &lt;p class="date"&gt;{$holiday->the_date|date_format:'%x'}&lt;/p&gt;
-    &lt;div class="description"&gt;
+  <article class="holiday-detail">
+    <h2>{$holiday->name|escape}</h2>
+    <p class="date">{$holiday->the_date|date_format:'%x'}</p>
+    <div class="description">
       {$holiday->description}
-    &lt;/div&gt;
-  &lt;/article&gt;
+    </div>
+  </article>
 {else}
-  &lt;p&gt;{$mod->Lang('error_notfound')}&lt;/p&gt;
+  <p>{$mod->Lang('error_notfound')}</p>
 {/if}
 ```
 
@@ -112,20 +112,20 @@ Design Manager integration involves registering your templates as template types
 {cms_action_url action=detail hid=$holiday->id returnid=$detailpage
                 forjs=1 detailtemplate='ajax_detail.tpl' assign='ajax_url'}
 
-&lt;script&gt;
+<script>
 $('#preview').load('{$ajax_url}' + '&showtemplate=false');
-&lt;/script&gt;
+</script>
 ```
 
 ### Canonical URLs
 
 For SEO, set a canonical URL in your detail template so search engines know the preferred URL for the content:
 
-```
+```smarty
 {if $holiday}
   {cms_action_url action=detail hid=$holiday->id assign='canonical'}
   {$canonical=$canonical scope=global}
-  &lt;!-- The page template can then use {$canonical} in a <link rel="canonical"> tag --&gt;
+  <!-- The page template can then use {$canonical} in a <link rel="canonical"> tag -->
 {/if}
 ```
 

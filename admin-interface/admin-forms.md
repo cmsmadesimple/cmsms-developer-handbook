@@ -11,22 +11,22 @@ The `{form_start}` plugin creates a `<form>` tag with all required hidden fields
 ```smarty
 {* Basic form — submits back to the current action *}
 {form_start}
-  &lt;!-- form fields --&gt;
+  <!-- form fields -->
 {form_end}
 
 {* Form that submits to a specific action *}
 {form_start action='save_settings'}
-  &lt;!-- form fields --&gt;
+  <!-- form fields -->
 {form_end}
 
 {* Form with additional hidden parameters *}
 {form_start action='edit_holiday' hid=$holiday->id}
-  &lt;!-- form fields --&gt;
+  <!-- form fields -->
 {form_end}
 
 {* Form with file upload support *}
 {form_start action='upload_file' enctype='multipart/form-data'}
-  &lt;!-- file input --&gt;
+  <!-- file input -->
 {form_end}
 ```
 
@@ -38,11 +38,11 @@ Generates a URL to a module action. Use it for links, not forms:
 
 ```html
 {* Link to an action *}
-&lt;a href="{cms_action_url action=edit_holiday hid=$holiday->id}"&gt;Edit&lt;/a&gt;
+<a href="{cms_action_url action=edit_holiday hid=$holiday->id}">Edit</a>
 
 {* Assign to a variable for reuse *}
 {cms_action_url action=edit_holiday hid=$holiday->id assign='edit_url'}
-&lt;a href="{$edit_url}"&gt;{$holiday->name}&lt;/a&gt;
+<a href="{$edit_url}">{$holiday->name}</a>
 
 {* Link to a frontend action on a specific page *}
 {cms_action_url action=detail hid=$holiday->id returnid=$detailpage}
@@ -99,9 +99,9 @@ The `prefix` parameter should always be `$actionid`. The `name` parameter become
 Generates a yes/no dropdown:
 
 ```sql
-&lt;select name="{$actionid}published"&gt;
+<select name="{$actionid}published">
   {cms_yesno selected=$holiday->published}
-&lt;/select&gt;
+</select>
 ```
 
 #### Standard HTML inputs
@@ -109,25 +109,25 @@ Generates a yes/no dropdown:
 For text inputs, selects, checkboxes, and other standard fields, use plain HTML with the `{$actionid}` prefix:
 
 ```sql
-&lt;!-- Text input --&gt;
-&lt;input type="text" name="{$actionid}name" value="{$holiday->name|escape}" /&gt;
+<!-- Text input -->
+<input type="text" name="{$actionid}name" value="{$holiday->name|escape}" />
 
-&lt;!-- Date input --&gt;
-&lt;input type="date" name="{$actionid}the_date"
-       value="{$holiday->the_date|date_format:'%Y-%m-%d'}" /&gt;
+<!-- Date input -->
+<input type="date" name="{$actionid}the_date"
+       value="{$holiday->the_date|date_format:'%Y-%m-%d'}" />
 
-&lt;!-- Select dropdown --&gt;
-&lt;select name="{$actionid}category"&gt;
+<!-- Select dropdown -->
+<select name="{$actionid}category">
   {foreach $categories as $key => $label}
-    &lt;option value="{$key}" {if $key == $item->category}selected{/if}&gt;
+    <option value="{$key}" {if $key == $item->category}selected{/if}>
       {$label|escape}
-    &lt;/option&gt;
+    </option>
   {/foreach}
-&lt;/select&gt;
+</select>
 
-&lt;!-- Submit and cancel buttons --&gt;
-&lt;input type="submit" name="{$actionid}submit" value="{$mod->Lang('submit')}" /&gt;
-&lt;input type="submit" name="{$actionid}cancel" value="{$mod->Lang('cancel')}" /&gt;
+<!-- Submit and cancel buttons -->
+<input type="submit" name="{$actionid}submit" value="{$mod->Lang('submit')}" />
+<input type="submit" name="{$actionid}cancel" value="{$mod->Lang('cancel')}" />
 ```
 > **Note:** Always prefix every input name with `{$actionid}`. This is how CMSMS routes form data back to the correct module action. Without the prefix, your parameters will not appear in the `$params` array.
 
@@ -138,52 +138,52 @@ The CMSMS admin theme provides standard CSS classes for consistent form layout. 
 #### Form row layout
 
 ```html
-&lt;div class="pageoverflow"&gt;
-  &lt;p class="pagetext"&gt;{$mod->Lang('name')}:&lt;/p&gt;
-  &lt;p class="pageinput"&gt;
-    &lt;input type="text" name="{$actionid}name" value="{$item->name|escape}" /&gt;
-  &lt;/p&gt;
-&lt;/div&gt;
+<div class="pageoverflow">
+  <p class="pagetext">{$mod->Lang('name')}:</p>
+  <p class="pageinput">
+    <input type="text" name="{$actionid}name" value="{$item->name|escape}" />
+  </p>
+</div>
 ```
 
 #### Action links area
 
 ```html
-&lt;div class="pageoptions"&gt;
-  &lt;a href="{cms_action_url action=edit_item}"&gt;
+<div class="pageoptions">
+  <a href="{cms_action_url action=edit_item}">
     {admin_icon icon='newobject.gif'} {$mod->Lang('add_item')}
-  &lt;/a&gt;
-&lt;/div&gt;
+  </a>
+</div>
 ```
 
 #### List table
 
 ```smarty
-&lt;table class="pagetable"&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;{$mod->Lang('name')}&lt;/th&gt;
-      &lt;th&gt;{$mod->Lang('date')}&lt;/th&gt;
-      &lt;th class="pageicon"&gt;&lt;/th&gt;
-      &lt;th class="pageicon"&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
+<table class="pagetable">
+  <thead>
+    <tr>
+      <th>{$mod->Lang('name')}</th>
+      <th>{$mod->Lang('date')}</th>
+      <th class="pageicon"></th>
+      <th class="pageicon"></th>
+    </tr>
+  </thead>
+  <tbody>
   {foreach $items as $item}
     {cms_action_url action=edit_item hid=$item->id assign='edit_url'}
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href="{$edit_url}"&gt;{$item->name|escape}&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;{$item->the_date|date_format:'%x'}&lt;/td&gt;
-      &lt;td&gt;&lt;a href="{$edit_url}" title="{$mod->Lang('edit')}"&gt;
-            {admin_icon icon='edit.gif'}&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;a class="del_item"
+    <tr>
+      <td><a href="{$edit_url}">{$item->name|escape}</a></td>
+      <td>{$item->the_date|date_format:'%x'}</td>
+      <td><a href="{$edit_url}" title="{$mod->Lang('edit')}">
+            {admin_icon icon='edit.gif'}</a></td>
+      <td><a class="del_item"
              href="{cms_action_url action=delete_item hid=$item->id}"
-             title="{$mod->Lang('delete')}"&gt;
-            {admin_icon icon='delete.gif'}&lt;/a&gt;&lt;/td&gt;
-    &lt;/tr&gt;
+             title="{$mod->Lang('delete')}">
+            {admin_icon icon='delete.gif'}</a></td>
+    </tr>
   {/foreach}
-  &lt;/tbody&gt;
-&lt;/table&gt;
+  </tbody>
+</table>
 ```
 
 #### Error and message display
@@ -191,13 +191,13 @@ The CMSMS admin theme provides standard CSS classes for consistent form layout. 
 ```smarty
 {* Display validation errors *}
 {if !empty($errors)}
-&lt;div class="pageerror"&gt;
-  &lt;ul&gt;
+<div class="pageerror">
+  <ul>
   {foreach $errors as $error}
-    &lt;li&gt;{$error}&lt;/li&gt;
+    <li>{$error}</li>
   {/foreach}
-  &lt;/ul&gt;
-&lt;/div&gt;
+  </ul>
+</div>
 {/if}
 ```
 

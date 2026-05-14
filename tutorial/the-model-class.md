@@ -11,7 +11,7 @@ Create a `lib/` directory inside `Holidays/`. CMSMS automatically loads classes 
 Create `lib/class.HolidayItem.php`:
 
 ```php
-&lt;?php
+<?php
 if (!defined('CMS_VERSION')) exit;
 
 class HolidayItem
