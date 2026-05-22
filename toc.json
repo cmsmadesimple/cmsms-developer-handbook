@@ -266,6 +266,11 @@
           "description": "Frontend templates render your module's output on the public website. Unlike admin templates, frontend templates have no prescribed style guide — the website..."
         },
         {
+          "title": "Frontend AJAX",
+          "file": "templates/frontend-ajax.md",
+          "description": "Load content dynamically on the frontend using AJAX. Covers HTML fragments, JSON responses, URL generation, showtemplate=false, jQuery patterns, and security."
+        },
+        {
           "title": "Design Manager Integration",
           "file": "templates/design-manager.md",
           "description": "By default, module templates are .tpl files stored in the templates/ directory. This works well for development, but for modules intended for public distribu..."
