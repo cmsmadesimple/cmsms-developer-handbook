@@ -4,6 +4,7 @@ Before submitting your module to the Forge, ensure it meets the quality standard
 
 ### Pre-Submission Checklist
 
+- **Naming** — Follow the [Naming Conventions](/docs/module-basics/naming-conventions): PascalCase module name matching folder and class, prefixed database tables, prefixed permissions and events, and `MAJOR.MINOR.PATCH` version format.
 - **License** — Include a GPL-compatible license file in `docs/LICENSE`. Add license headers to all PHP files.
 - **Security** — Every PHP file starts with `if (!defined('CMS_VERSION')) exit;`. Every admin action checks permissions. All SQL uses parameterized queries.
 - **Install / Uninstall** — The module installs cleanly and uninstalls completely, removing all tables, permissions, preferences, and events.

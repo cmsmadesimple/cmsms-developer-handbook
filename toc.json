@@ -55,6 +55,11 @@
           "title": "Best Practices",
           "file": "module-basics/best-practices.md",
           "description": "Following these conventions will make your module more secure, maintainable, and compatible with the CMSMS ecosystem. Many of these patterns are enforced by ..."
+        },
+        {
+          "title": "Naming Conventions",
+          "file": "module-basics/naming-conventions.md",
+          "description": "All naming rules in one place: module names, files, actions, templates, database tables, permissions, events, Smarty variables, and language keys."
         }
       ],
       "description": "This chapter covers the fundamental building blocks of every CMSMS module: the required class methods that tell CMSMS about your module, the lifecycle files ..."
