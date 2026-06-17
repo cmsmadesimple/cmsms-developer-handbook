@@ -4,5 +4,5 @@ CMSMS module development is supported by diagnostic tools that scan your code fo
 
 ### In This Chapter
 
-- [Module Check](/docs/developer-tools/module-check) — A CMSMS admin module that scans installed modules for compliance with best practices, security patterns, and structural requirements.
-- [CMSMS Scanner](/docs/developer-tools/cmsms-scanner) — A standalone Python-based scanner for deep security and quality analysis of CMSMS modules.
+- [cmscli](/docs/developer-tools/cmscli) — A command line interface for CMSMS automation. Modules can contribute their own CLI commands.
+- [ModuleCheckerer](/docs/developer-tools/module-checkerer) — A CMSMS admin module that scans installed modules for compliance with best practices, security patterns, and structural requirements.

@@ -6,7 +6,7 @@ CMSMS 2.2 introduced an asynchronous job system that allows modules to schedule 
 
 1. Your module creates a job object (extending `\CMSMS\Async\Job` or `\CMSMS\Async\CronJob`).
 2. You call `$job->save()` to add it to the job queue in the database.
-3. The CmsJobManager module checks for pending jobs on each page request and executes them when their start time has passed.
+3. The CmsJobManager ModuleCheckers for pending jobs on each page request and executes them when their start time has passed.
 4. For cron jobs, after execution the next run time is calculated based on the frequency and the job is re-queued automatically.
 
 > **Note:** The CmsJobManager module must be installed and enabled for background jobs to work. It is included with CMSMS 2.2+ but may need to be activated.

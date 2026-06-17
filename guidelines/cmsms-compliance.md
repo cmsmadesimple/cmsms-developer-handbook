@@ -2,7 +2,7 @@
 
 These rules ensure your module follows CMS Made Simple conventions for naming, structure, API usage, and compatibility. Violations can cause conflicts with other modules, break on different CMSMS installations, or use deprecated APIs that will be removed in future versions.
 
-These guidelines are enforced by [Module Check](/module-check) and the [CMSMS Scanner](/cmsms-scanner). Each rule includes a severity level, explanation, and code examples.
+These guidelines are enforced by [ModuleChecker](/module-checker). Each rule includes a severity level, explanation, and code examples.
 
 ### CMSMS\_CMS\_001: Module table without module\_ prefix after CMS\_DB\_PREFIX
 

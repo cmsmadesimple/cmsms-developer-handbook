@@ -2,7 +2,7 @@
 
 These rules flag code quality issues that affect maintainability, performance, and reliability. While not security vulnerabilities, they indicate patterns that lead to bugs, poor performance, or difficulty maintaining the module over time.
 
-These guidelines are enforced by [Module Check](/module-check) and the [CMSMS Scanner](/cmsms-scanner). Each rule includes a severity level, explanation, and code examples.
+These guidelines are enforced by [ModuleChecker](/module-checker). Each rule includes a severity level, explanation, and code examples.
 
 ### CMSMS\_QUAL\_001: Inline <script> block in PHP echo output
 

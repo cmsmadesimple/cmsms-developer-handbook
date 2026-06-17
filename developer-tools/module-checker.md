@@ -1,17 +1,17 @@
-## Module Check
+## ModuleChecker
 
-Module Check is a diagnostic module that scans installed CMSMS modules for compliance with best practices, security patterns, deprecated API usage, and structural requirements — all from within the admin panel.
+ModuleChecker is a diagnostic module that scans installed CMSMS modules for compliance with best practices, security patterns, deprecated API usage, and structural requirements — all from within the admin panel.
 
 ### Installation
 
-1. Upload the `ModuleCheck` folder to the `modules/` directory.
+1. Upload the `ModuleChecker` folder to the `modules/` directory.
 2. Install via Extensions > Module Manager.
-3. Grant the "Manage Module Check" permission to admin users.
-4. Navigate to Extensions > Module Check.
+3. Grant the "Manage ModuleChecker" permission to admin users.
+4. Navigate to Extensions > ModuleChecker.
 
 ### What It Checks
 
-Module Check runs 19 automated checks across 3 categories:
+ModuleChecker runs 19 automated checks across 3 categories:
 
 #### General
 
@@ -54,13 +54,13 @@ Each module receives a score from 0–100:
 
 ### Usage
 
-1. Navigate to Extensions > Module Check.
+1. Navigate to Extensions > ModuleChecker.
 2. Select a module from the dropdown.
 3. Optionally filter by category (General, Security, Best Practices) or type (error, warning).
 4. Click "Run Checks" to scan the module.
 5. Review the results table showing findings with severity, type, message, and file.
 
-Module Check is read-only — it scans files but never modifies them.
+ModuleChecker is read-only — it scans files but never modifies them.
 
 ### Next Steps
 

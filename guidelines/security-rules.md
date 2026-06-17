@@ -2,7 +2,7 @@
 
 These rules detect security vulnerabilities in your module code — SQL injection, XSS, file inclusion, command injection, CSRF, hardcoded credentials, and other attack vectors. Every high-severity finding here represents a real exploitable vulnerability.
 
-These guidelines are enforced by [Module Check](/module-check) and the [CMSMS Scanner](/cmsms-scanner). Each rule includes a severity level, explanation, and code examples.
+These guidelines are enforced by [ModuleChecker](/module-checker). Each rule includes a severity level, explanation, and code examples.
 
 ### CMSMS\_SEC\_001: User input flows into SQL query
 

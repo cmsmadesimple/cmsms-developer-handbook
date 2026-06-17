@@ -105,9 +105,9 @@ On merge, the live site updates automatically — no manual deployment needed.
 │   ├── module-xml-packaging.md
 │   └── module-info-file.md
 └── developer-tools/       ← Chapter: Developer Tools
+    ├── cmscli.md
     ├── developer-tools-overview.md
-    ├── module-check.md
-    └── cmsms-scanner.md
+    ├── module-checker.md
 ```
 
 ## Writing Guidelines

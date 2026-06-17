@@ -18,9 +18,9 @@ Before submitting your module to the Forge, ensure it meets the quality standard
 - **Test on a clean install** — Install, use, upgrade, and uninstall on a fresh CMSMS installation.
 
 <!--
-### Using Module Check
+### Using ModuleChecker
 
-Run the [Module Check](/docs/developer-tools/module-check) module against your module before submission. It performs automated checks for all of the above issues and more, giving you a score from 0–100 with specific findings.
+Run the [ModuleChecker](/docs/developer-tools/module-checker) module against your module before submission. It performs automated checks for all of the above issues and more, giving you a score from 0–100 with specific findings.
 -->
 
 ### Registering and Publishing on the Forge

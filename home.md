@@ -23,8 +23,8 @@ This handbook walks you through every aspect of module development, from creatin
 - **Internationalization** — Make your module translatable with language files and the Lang() method.
 - **The CMSMS Forge** — Package, submit, and maintain your module on the official CMSMS module repository.
 - **HTTP and REST APIs** — Make external HTTP requests, build REST integrations, and comply with external service disclosure requirements.
-- **Developer Tools** — Use diagnostic tools like Module Check and CMSMS Scanner to audit your module for best practices, security, and compliance.
-- **Module Guidelines** — Reference of all compliance, security, and code quality rules enforced by Module Check.
+- **Developer Tools** — Use diagnostic tools like ModuleChecker and CMSMS Scanner to audit your module for best practices, security, and compliance.
+- **Module Guidelines** — Reference of all compliance, security, and code quality rules enforced by ModuleChecker.
 - **Tutorial: Building a Holidays Module** — A hands-on, step-by-step guide to building a complete working module from scratch.
 
 ### Prerequisites
