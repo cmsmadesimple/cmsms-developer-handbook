@@ -2,6 +2,8 @@
 
 ModuleChecker is a diagnostic module that scans installed CMSMS modules for compliance with best practices, security patterns, deprecated API usage, and structural requirements — all from within the admin panel.
 
+**Forge Project:** [https://dev.cmsmadesimple.org/projects/modulechecker](https://dev.cmsmadesimple.org/projects/modulechecker)
+
 ### Installation
 
 1. Upload the `ModuleChecker` folder to the `modules/` directory.

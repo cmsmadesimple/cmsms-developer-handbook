@@ -465,7 +465,6 @@
     {
       "title": "Developer Tools",
       "path": "developer-tools",
-      "disabled": true,
       "pages": [
         {
           "title": "Developer Tools",
@@ -475,6 +474,7 @@
         {
           "title": "cmscli",
           "file": "developer-tools/cmscli.md",
+          "disabled": true,
           "description": "A command line interface for CMSMS automation. Modules can contribute their own CLI commands via the clicommands capability."
         },
         {

@@ -4,6 +4,10 @@ cmscli is a standalone PHP CLI application for managing CMSMS installations from
 
 Modules can extend cmscli with their own commands using the `clicommands` capability.
 
+**Version:** 2.0.0
+**Requires:** CMSMS 2.2.14+, PHP 7.4+
+**Platform:** Linux/Unix (requires SSH access)
+
 ### Installation
 
 1. Download `cmscli.phar` from [dev.cmsmadesimple.org](http://dev.cmsmadesimple.org/projects/cmscli)
@@ -61,7 +65,7 @@ That's it. You run cmscli from inside your CMSMS root directory:
 | `group-perm-list` | List permissions for a group |
 | **Modules** | |
 | `module-list` | List installed modules |
-| `module-install` | Install a module |
+| `module-install` | Install a module (use `--forge` to download from Forge, `--with-deps` to include dependencies) |
 | `module-upgrade` | Upgrade a module |
 | `module-activate` | Activate a module |
 | `module-deactivate` | Deactivate a module |
@@ -87,6 +91,23 @@ That's it. You run cmscli from inside your CMSMS root directory:
 | `cmsms-download` | Download the latest CMSMS installation assistant |
 
 Use `./cmscli <command> --help` for detailed usage of any command.
+
+### Installing Modules from the Forge
+
+The `module-install` command can download modules directly from the CMSMS Forge:
+
+```bash
+# Install a module already on disk
+./cmscli module-install MyModule
+
+# Download from the Forge and install
+./cmscli module-install MyModule --forge
+
+# Download with all dependencies resolved and installed automatically
+./cmscli module-install CGSmartImage --with-deps
+```
+
+With `--with-deps`, cmscli queries the Forge API for the full dependency tree, downloads everything first (verifying checksums), then installs in the correct order. If a download fails, nothing gets installed. If an install fails, all files are already on disk for a retry.
 
 ### Adding CLI Commands to Your Module
 
