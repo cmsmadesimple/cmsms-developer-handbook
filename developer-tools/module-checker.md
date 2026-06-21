@@ -106,7 +106,3 @@ This module optionally connects to the following external services:
 
 - **GitHub API** — Checks for and downloads detection rule updates. No user data is sent. Used automatically on page load (version check only) and when clicking "Update Now".
 - **OpenAI API** — Generates AI-powered audit reports and refactoring plans. Scan findings (rule violations, file names, code snippets) are sent for analysis. Only used when explicitly triggered by the admin.
-
-### Next Steps
-
-Continue to {cms\_selflink dir='next' text='CMSMS Scanner'} for a standalone scanner with deeper analysis capabilities.
