@@ -10,7 +10,7 @@ These guidelines are enforced by [ModuleChecker](/module-checker). Each rule inc
 
 Inline JS in PHP output prevents browser caching, blocks CSP enforcement, and tangles presentation with server logic.
 
-**Fix:** Move JS to a .js file in assets/ and load via $this->AddHeaderJavascript() or a template <script src>.
+**Fix:** Move JS to a .js file in `js/` and load via `$this->AddHeaderJavascript()` or a template `<script src>`.
 
 ```
 // Bad
@@ -18,7 +18,7 @@ echo '<script>document.getElementById("btn").addEventListener("click", function(
 ```
 ```php
 // Good
-$this->AddHeaderJavascript($this->GetModuleURLPath() . '/assets/admin.js');
+$this->AddHeaderJavascript($this->GetModuleURLPath() . '/js/admin.js');
 ```
 
 ### CMSMS\_QUAL\_002: Large inline <style> block in template
@@ -27,7 +27,7 @@ $this->AddHeaderJavascript($this->GetModuleURLPath() . '/assets/admin.js');
 
 Large inline CSS blocks prevent browser caching, increase page weight on every request, and make styling inconsistent across module views.
 
-**Fix:** Move to a .css file in assets/ and load via $this->AddHeaderCSS() or a <link> tag.
+**Fix:** Move to a .css file in `css/` and load via `$this->AddHeaderCSS()` or a `<link>` tag.
 
 ```
 // Bad
@@ -39,8 +39,8 @@ Large inline CSS blocks prevent browser caching, increase page weight on every r
 ```
 ```
 // Good
-{* In assets/admin.css *}
-<link rel="stylesheet" href="{$module_url}/assets/admin.css">
+{* In css/admin.css *}
+<link rel="stylesheet" href="{$module_url}/css/admin.css">
 ```
 
 ### CMSMS\_QUAL\_003: Database query inside a loop body

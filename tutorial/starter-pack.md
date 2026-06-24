@@ -58,7 +58,7 @@ Clicking "Preview" loads a compact AJAX preview without leaving the page — it 
 
 ### What's Inside
 
-The starter pack contains 16 files organized into the standard CMSMS module structure:
+The starter pack contains 18 files organized into the standard CMSMS module structure:
 
 ```
 Holidays/
@@ -70,6 +70,9 @@ Holidays/
 ├── action.edit_holiday.php
 ├── method.install.php
 ├── method.uninstall.php
+├── assets/
+│   ├── icon.svg
+│   └── icon-128x128.png
 ├── docs/
 │   ├── LICENSE
 │   ├── help.inc

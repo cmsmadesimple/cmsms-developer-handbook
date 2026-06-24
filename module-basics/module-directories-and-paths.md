@@ -26,6 +26,7 @@ modules/YourModule/
 ├── action.defaultadmin.php    # Default admin action
 ├── action.default.php         # Default frontend action
 ├── action.*.php               # Additional actions
+├── assets/                    # Forge listing images (icon, banner, screenshots)
 ├── docs/
 │   ├── help.inc               # Module help (HTML fragment)
 │   └── changelog.inc          # Change log (HTML fragment)
@@ -51,6 +52,7 @@ modules/YourModule/
 | Location | Purpose |
 | --- | --- |
 | Root directory | Module class, action files, lifecycle methods, moduleinfo.ini |
+| `assets/` | Forge listing images — icon, banner, and screenshots. Not used at runtime |
 | `lang/` | Language files. `en_US.php` is the base. Translations go in `lang/ext/` |
 | `lib/` | PHP classes — models, queries, helpers. Auto-loaded by CMSMS |
 | `templates/` | Smarty template files for admin and frontend views |

@@ -42,6 +42,9 @@ modules/Holidays/
 ├── action.edit_holiday.php
 ├── method.install.php
 ├── method.uninstall.php
+├── assets/
+│   ├── icon.svg
+│   └── icon-128x128.png
 ├── lang/
 │   └── en_US.php
 ├── lib/
