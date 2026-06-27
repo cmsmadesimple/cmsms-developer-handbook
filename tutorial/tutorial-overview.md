@@ -22,13 +22,13 @@ The tutorial is based on the official *Introduction to Writing Modules for CMS M
 
 ### Chapters
 
-1. [Getting Started](/getting-started) — Create the module skeleton, add the virtual methods, and create the lang file.
-2. [Install, Uninstall, and the Database](/install-and-database) — Create the install/uninstall routines, permissions, and the holidays database table.
-3. [The Model Class](/the-model-class) — Create the HolidayItem class for managing holiday records.
-4. [Admin CRUD](/admin-crud) — Build the admin panel: add, list, edit, and delete holidays.
-5. [Frontend Views](/frontend-views) — Create the summary and detail views for the public website.
-6. [Pretty URLs and Routes](/pretty-urls) — Add SEO-friendly URLs and route registration.
-7. [Search, Lazy Loading, and AJAX](/search-and-more) — Integrate with the Search module, enable lazy loading, and add AJAX previews.
+1. [Getting Started](/docs/tutorial/getting-started) — Create the module skeleton, add the virtual methods, and create the lang file.
+2. [Install, Uninstall, and the Database](/docs/tutorial/install-and-database) — Create the install/uninstall routines, permissions, and the holidays database table.
+3. [The Model Class](/docs/tutorial/the-model-class) — Create the HolidayItem class for managing holiday records.
+4. [Admin CRUD](/docs/tutorial/admin-crud) — Build the admin panel: add, list, edit, and delete holidays.
+5. [Frontend Views](/docs/tutorial/frontend-views) — Create the summary and detail views for the public website.
+6. [Pretty URLs and Routes](/docs/tutorial/pretty-urls) — Add SEO-friendly URLs and route registration.
+7. [Search, Lazy Loading, and AJAX](/docs/tutorial/search-and-more) — Integrate with the Search module, enable lazy loading, and add AJAX previews.
 
 ### Final File Structure
 
@@ -62,4 +62,4 @@ Let's get started with {cms\_selflink dir='next' text='Getting Started'}.
 
 ### Starter Pack
 
-Want to skip ahead? Download the complete Holidays module as a ready-to-install ZIP file from the [Starter Pack](/starter-pack) page. You can install it immediately or use it as a reference while following the tutorial.
+Want to skip ahead? Download the complete Holidays module as a ready-to-install ZIP file from the [Starter Pack](/docs/tutorial/starter-pack) page. You can install it immediately or use it as a reference while following the tutorial.

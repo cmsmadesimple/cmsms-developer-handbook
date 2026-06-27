@@ -164,4 +164,4 @@ The `forjs=1` parameter in `{cms_action_url}` triggers URL processing suitable f
 
 ### Next Steps
 
-This completes the Admin Interface chapter. Continue to [Smarty Tags](/smarty-tags) to learn how to create frontend tags that content editors can use in pages and templates.
+This completes the Admin Interface chapter. Continue to [Smarty Tags](/docs/smarty-tags) to learn how to create frontend tags that content editors can use in pages and templates.

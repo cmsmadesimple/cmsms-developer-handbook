@@ -6,7 +6,7 @@ This chapter introduces the core concepts you need to understand before writing 
 
 ### In This Chapter
 
-- [What is a Module?](/what-is-a-module) — Understand the role of modules in the CMSMS architecture, and how they compare to Plugins and User Defined Tags.
+- [What is a Module?](/docs/intro/what-is-a-module) — Understand the role of modules in the CMSMS architecture, and how they compare to Plugins and User Defined Tags.
 
 ### Who Should Read This
 
@@ -19,6 +19,6 @@ This chapter is for PHP developers who are new to CMS Made Simple module develop
 
 ### Learn by Building
 
-If you prefer a hands-on approach, jump straight into the [Tutorial: Building a Holidays Module](/tutorial-start). It walks you through creating a complete working module from scratch — database tables, admin CRUD, frontend display, and more. There's also a [Starter Pack](/starter-pack) you can download and install immediately to see the finished result.
+If you prefer a hands-on approach, jump straight into the [Tutorial: Building a Holidays Module](/docs/tutorial/tutorial-overview). It walks you through creating a complete working module from scratch — database tables, admin CRUD, frontend display, and more. There's also a [Starter Pack](/docs/tutorial/starter-pack) you can download and install immediately to see the finished result.
 
-If you're already comfortable with the prerequisites above, continue to [What is a Module?](/what-is-a-module) to get started.
+If you're already comfortable with the prerequisites above, continue to [What is a Module?](/docs/intro/what-is-a-module) to get started.

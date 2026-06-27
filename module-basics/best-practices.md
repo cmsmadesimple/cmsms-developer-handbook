@@ -1,6 +1,6 @@
 ## Best Practices
 
-Following these conventions will make your module more secure, maintainable, and compatible with the CMSMS ecosystem. Many of these patterns are enforced by tools like [ModuleChecker](/module-checker).
+Following these conventions will make your module more secure, maintainable, and compatible with the CMSMS ecosystem. Many of these patterns are enforced by tools like [ModuleChecker](/docs/developer-tools/module-checker).
 
 ### Module Naming
 

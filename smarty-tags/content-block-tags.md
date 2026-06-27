@@ -112,4 +112,4 @@ In the page editor, the admin will see a dropdown of holidays (from your `GetCon
 
 ### Next Steps
 
-Continue to [Tag Parameters](/tag-parameters) to learn how to define, register, and document the parameters your tags accept.
+Continue to [Tag Parameters](/docs/smarty-tags/tag-parameters) to learn how to define, register, and document the parameters your tags accept.
