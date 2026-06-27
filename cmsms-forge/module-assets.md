@@ -2,6 +2,8 @@
 
 The `assets/` directory in your module is where you store images used on your Forge project page — the icon, banner, and screenshots that represent your module to potential users. These files are not used at runtime; they are purely for the Forge listing.
 
+> **Important:** The `assets/` directory is **not** included in your module's XML package and should **not** be submitted with your module. These files are uploaded separately through the Forge project management interface. They exist in your development directory for convenience and version control, but the Module Manager packaging process excludes them entirely.
+
 ```
 modules/YourModule/
 └── assets/
@@ -134,4 +136,4 @@ The Forge displays these captions below each screenshot in the gallery.
 
 ### Next Steps
 
-Once your assets are in place, see [Module XML Packaging](module-xml-packaging.md) to learn how these files are included in your distributable package.
+Once your assets are in place, see [Module XML Packaging](/docs/cmsms-forge/module-xml-packaging) to learn how these files are included in your distributable package.

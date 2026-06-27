@@ -1,6 +1,6 @@
 ## Images and Icons
 
-Modules use images for admin interface icons and frontend content. This page covers runtime image assets — the images your module uses while running. For Forge listing assets (icons, banners, screenshots), see [Module Assets](../cmsms-forge/module-assets.md).
+Modules use images for admin interface icons and frontend content. This page covers runtime image assets — the images your module uses while running. For Forge listing assets (icons, banners, screenshots), see [Module Assets](/docs/cmsms-forge/module-assets).
 
 ### Admin Theme Icons
 
@@ -82,8 +82,8 @@ move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . DIRECTORY_SEPARAT
 | Admin theme icons | Built into the admin theme | `{admin_icon icon='edit.gif'}` |
 | Custom module images | `images/` | `{$mod->GetModuleURLPath()}/images/file.png` |
 | User uploads | CMSMS uploads directory | `$config['uploads_url']` |
-| Forge assets (icon, banner, screenshots) | `assets/` | See [Module Assets](../cmsms-forge/module-assets.md) |
+| Forge assets (icon, banner, screenshots) | `assets/` | See [Module Assets](/docs/cmsms-forge/module-assets) |
 
 ### Next Steps
 
-For loading CSS and JavaScript, see [Loading CSS and JavaScript](loading-css-and-javascript.md). For Forge listing assets with size requirements, see [Module Assets](../cmsms-forge/module-assets.md).
+For loading CSS and JavaScript, see [Loading CSS and JavaScript](/docs/assets-and-resources/loading-css-and-javascript). For Forge listing assets with size requirements, see [Module Assets](/docs/cmsms-forge/module-assets).

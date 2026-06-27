@@ -185,4 +185,4 @@ public function GetVersion() { return '1.2.3'; }
 
 ### Next Steps
 
-Now that you understand the naming rules, continue to [Best Practices](best-practices.md) for broader coding conventions and patterns every module should follow.
+Now that you understand the naming rules, continue to [Best Practices](/docs/module-basics/best-practices) for broader coding conventions and patterns every module should follow.
