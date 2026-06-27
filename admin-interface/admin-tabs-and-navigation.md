@@ -188,4 +188,4 @@ $(document).ready(function(){
 
 ### Next Steps
 
-This completes the Admin Interface chapter. Continue to [Smarty Tags](/docs/smarty-tags) to learn how to create frontend tags that content editors can use in pages and templates.
+This completes the Admin Interface chapter. Continue to [Smarty Tags](/docs/smarty-tags/smarty-tags-overview) to learn how to create frontend tags that content editors can use in pages and templates.

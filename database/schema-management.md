@@ -179,4 +179,4 @@ while (!$query->EOF) {
 
 ### Next Steps
 
-This completes the Database Operations chapter. Continue to [Templates](/docs/templates) to learn how to use Smarty templates for admin and frontend output.
+This completes the Database Operations chapter. Continue to [Templates](/docs/templates/templates-overview) to learn how to use Smarty templates for admin and frontend output.

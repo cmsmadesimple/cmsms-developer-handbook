@@ -86,4 +86,4 @@ For Git-based projects, use a subtree or manually download the translations befo
 
 ### Next Steps
 
-This completes the Internationalization chapter. Continue to [The CMSMS Forge](/docs/cmsms-forge) to learn how to package and distribute your module.
+This completes the Internationalization chapter. Continue to [The CMSMS Forge](/docs/cmsms-forge/forge-overview) to learn how to package and distribute your module.

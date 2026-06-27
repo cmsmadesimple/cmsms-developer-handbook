@@ -33,7 +33,7 @@ $dict->ExecuteSQLArray($sqlarray);
 #### What you typically do in method.install.php:
 
 - **Create permissions** — using `CreatePermission(name, description)`.
-- **Create database tables** — using the ADODB DataDictionary (see [Database Operations](/docs/database)).
+- **Create database tables** — using the ADODB DataDictionary (see [Database Operations](/docs/database/database-overview)).
 - **Set default preferences** — using `$this->SetPreference('key', 'value')`.
 - **Create events** — using `$this->CreateEvent('EventName')`.
 - **Register event handlers** — using `$this->AddEventHandler('ModuleName', 'EventName')`.

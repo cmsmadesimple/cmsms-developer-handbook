@@ -164,4 +164,4 @@ In this example, when CMSMSStripe fires the hook, both Module B (via HookManager
 
 ### Next Steps
 
-This completes the Events chapter. Continue to [Admin Interface](/docs/admin-interface) to learn how to build admin panels with actions, tabs, and navigation.
+This completes the Events chapter. Continue to [Admin Interface](/docs/admin-interface/admin-interface-overview) to learn how to build admin panels with actions, tabs, and navigation.

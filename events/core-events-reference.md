@@ -90,4 +90,4 @@ You can see all registered events and their handlers in the CMSMS admin panel un
 
 ### Next Steps
 
-This completes the Events chapter. Continue to [Admin Interface](/docs/admin-interface) to learn how to build admin panels with actions, tabs, and navigation.
+This completes the Events chapter. Continue to [Admin Interface](/docs/admin-interface/admin-interface-overview) to learn how to build admin panels with actions, tabs, and navigation.

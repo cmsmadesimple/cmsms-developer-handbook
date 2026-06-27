@@ -35,7 +35,7 @@ fileMatchPattern: "**/*.md"
 
 ## Cross-References
 - Link to other pages using absolute paths with the `/docs/` prefix: `[Checking Permissions](/docs/security/checking-permissions)`
-- For chapter overview pages, link to the chapter path: `[Module Basics](/docs/module-basics)`
+- For chapter overview pages, link to the overview file: `[Module Basics](/docs/module-basics/module-basics-overview)`
 - Don't use relative paths (`../security/checking-permissions.md`) — they break on the live site
 - Don't use full domain URLs for internal documentation links
 

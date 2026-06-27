@@ -153,4 +153,4 @@ Every module goes through a defined lifecycle managed by CMSMS:
 
 ### Next Steps
 
-Now that you understand what modules are and what they can do, continue to [Module Basics](/docs/module-basics) to learn the required file structure, header methods, and lifecycle hooks in detail.
+Now that you understand what modules are and what they can do, continue to [Module Basics](/docs/module-basics/module-basics-overview) to learn the required file structure, header methods, and lifecycle hooks in detail.

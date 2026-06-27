@@ -144,4 +144,4 @@ cms_siteprefs::remove('holidays_', true);  // Remove all site prefs with this pr
 
 ### Next Steps
 
-This completes the Preferences chapter. Continue to [Database Operations](/docs/database) to learn how to create tables, query data, and manage schema migrations.
+This completes the Preferences chapter. Continue to [Database Operations](/docs/database/database-overview) to learn how to create tables, query data, and manage schema migrations.

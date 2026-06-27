@@ -183,4 +183,4 @@ move_uploaded_file($_FILES['upload']['tmp_name'], $dest);
 
 ### Next Steps
 
-This completes the Module Security chapter. Continue to [Events](/docs/events) to learn how modules communicate with each other and the CMSMS core through the event system.
+This completes the Module Security chapter. Continue to [Events](/docs/events/events-overview) to learn how modules communicate with each other and the CMSMS core through the event system.

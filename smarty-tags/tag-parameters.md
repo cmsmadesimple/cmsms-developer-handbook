@@ -135,4 +135,4 @@ protected function InitializeAdmin()
 
 ### Next Steps
 
-This completes the Smarty Tags chapter. Continue to [Module Preferences](/docs/preferences) to learn how to store and retrieve module settings.
+This completes the Smarty Tags chapter. Continue to [Module Preferences](/docs/preferences/preferences-overview) to learn how to store and retrieve module settings.

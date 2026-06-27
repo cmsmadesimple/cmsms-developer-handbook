@@ -195,7 +195,7 @@ $lang['admindescription'] = 'A module for managing and displaying holidays';
 $lang['ask_uninstall'] = 'Are you sure you want to uninstall the Holidays module? All holiday data will be permanently deleted.';
 ```
 
-CMSMS automatically reads this file the first time `Lang()` is called. See [Internationalization](/docs/internationalization) for full details on language files and translations.
+CMSMS automatically reads this file the first time `Lang()` is called. See [Internationalization](/docs/internationalization/internationalization-overview) for full details on language files and translations.
 
 ### Complete Example
 

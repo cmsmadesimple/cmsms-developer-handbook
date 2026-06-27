@@ -102,4 +102,4 @@ For most modules, a single `manage_modulename` permission is sufficient. Add mor
 
 ### Next Steps
 
-This completes the Users and Permissions chapter. Continue to [Internationalization](/docs/internationalization) to learn how to make your module translatable.
+This completes the Users and Permissions chapter. Continue to [Internationalization](/docs/internationalization/internationalization-overview) to learn how to make your module translatable.

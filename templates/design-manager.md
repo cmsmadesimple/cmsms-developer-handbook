@@ -202,4 +202,4 @@ try {
 
 ### Next Steps
 
-This completes the Templates chapter. Continue to [Users and Permissions](/docs/users) to learn how to work with admin users, groups, and the permission system.
+This completes the Templates chapter. Continue to [Users and Permissions](/docs/users/users-overview) to learn how to work with admin users, groups, and the permission system.
