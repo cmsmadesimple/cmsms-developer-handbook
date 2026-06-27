@@ -34,8 +34,10 @@ fileMatchPattern: "**/*.md"
 - Avoid HTML in Markdown — use standard Markdown syntax only
 
 ## Cross-References
-- Reference other pages by relative path: `[Checking Permissions](../security/checking-permissions.md)`
-- Don't use absolute URLs for internal documentation links
+- Link to other pages using absolute paths with the `/docs/` prefix: `[Checking Permissions](/docs/security/checking-permissions)`
+- For chapter overview pages, link to the chapter path: `[Module Basics](/docs/module-basics)`
+- Don't use relative paths (`../security/checking-permissions.md`) — they break on the live site
+- Don't use full domain URLs for internal documentation links
 
 ## What NOT to Do
 - Don't use `{php}` tags in template examples (it's a security violation)
