@@ -134,6 +134,12 @@
       "description": "Events are CMSMS's hook system — they allow modules to communicate with each other and with the core without creating tight dependencies. A module can send a..."
     },
     {
+      "title": "Communicating with Other Modules",
+      "path": "module-communication",
+      "file": "module-communication/module-communication.md",
+      "description": "CMSMS modules can communicate directly by obtaining a reference to another module instance and calling its public methods. This chapter covers GetModuleInstance, hard vs. soft dependencies, the capability system, and best practices for inter-module APIs."
+    },
+    {
       "title": "Admin Interface",
       "path": "admin-interface",
       "pages": [
